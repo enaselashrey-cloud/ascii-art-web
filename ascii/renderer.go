@@ -35,7 +35,7 @@ func Render(banner *Banner, opts Options) (string, error){
 	if opts.Color != "" && opts.Substring != "" {
 		coloredPos = getColoredPosition(opts.Text, opts.Substring)
 	}
-
+//هيعمل سطر فاضي ف حالة وجود نيولاين
 	for _, line := range lines {
 		if line == "" {
 			result.WriteByte('\n')
