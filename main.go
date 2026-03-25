@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 type PageData struct {
-	Result string
+	Result template.HTML
 }
 func handler(w http.ResponseWriter, r *http.Request){
 
@@ -30,13 +30,14 @@ func handler(w http.ResponseWriter, r *http.Request){
 
 	opts := ascii.Options{
 		Text:  text,
-		Color: color,
 	}
 
 	result, _ := ascii.Render(banner, opts)
-
-	tmpl.Execute(w, PageData{Result: result})
+	if color != "" {
+	result = "<span style='color:" + color + "'>" + result + "</span>"
 }
+
+tmpl.Execute(w, PageData{Result: template.HTML(result)})}
 
 
 func main(){
