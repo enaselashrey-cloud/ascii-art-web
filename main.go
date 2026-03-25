@@ -8,12 +8,19 @@ import (
 
 func handler(w http.ResponseWriter, r*http.Request){
 text := r.FormValue("text")// هات قيمة انبوت من صغحة html 
+font := r.FormValue("font")
+
 if text == "" {
 		http.ServeFile(w, r, "templates/index.html")
 		return
 	}
 
-banner, _:= ascii.NewBanner("standard")
+if font == "" {
+	font = "standard"
+}
+	
+
+banner, _:= ascii.NewBanner(font)
 opts := ascii.Options{
 	Text : text,
 }
