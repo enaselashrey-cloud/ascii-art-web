@@ -2,31 +2,40 @@ package main
 
 import (
 	"ascii-color/ascii"
-	"fmt"
+		"html/template"
+
 	"net/http"
 )
+type PageData struct {
+	Result string
+}
+func handler(w http.ResponseWriter, r *http.Request){
 
-func handler(w http.ResponseWriter, r*http.Request){
-text := r.FormValue("text")// هات قيمة انبوت من صغحة html 
-font := r.FormValue("font")
+	tmpl := template.Must(template.ParseFiles("templates/index.html"))
 
-if text == "" {
-		http.ServeFile(w, r, "templates/index.html")
+	text := r.FormValue("text")
+	font := r.FormValue("font")
+	color := r.FormValue("color")
+
+	if text == "" {
+		tmpl.Execute(w, nil)
 		return
 	}
 
-if font == "" {
-	font = "standard"
-}
-	
+	if font == "" {
+		font = "standard"
+	}
 
-banner, _:= ascii.NewBanner(font)
-opts := ascii.Options{
-	Text : text,
-}
-result, _:= ascii.Render(banner,opts)
-fmt.Fprintln(w,result)
+	banner, _ := ascii.NewBanner(font)
 
+	opts := ascii.Options{
+		Text:  text,
+		Color: color,
+	}
+
+	result, _ := ascii.Render(banner, opts)
+
+	tmpl.Execute(w, PageData{Result: result})
 }
 
 
