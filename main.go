@@ -2,14 +2,16 @@ package main
 
 import (
 	"ascii-color/ascii"
-		"html/template"
+	"html/template"
 
 	"net/http"
 )
+
 type PageData struct {
 	Result template.HTML
 }
-func handler(w http.ResponseWriter, r *http.Request){
+
+func handler(w http.ResponseWriter, r *http.Request) {
 
 	tmpl := template.Must(template.ParseFiles("templates/index.html"))
 
@@ -29,18 +31,18 @@ func handler(w http.ResponseWriter, r *http.Request){
 	banner, _ := ascii.NewBanner(font)
 
 	opts := ascii.Options{
-		Text:  text,
+		Text: text,
 	}
 
 	result, _ := ascii.Render(banner, opts)
 	if color != "" {
-	result = "<span style='color:" + color + "'>" + result + "</span>"
+		result = "<span style='color:" + color + "'>" + result + "</span>"
+	}
+
+	tmpl.Execute(w, PageData{Result: template.HTML(result)})
 }
 
-tmpl.Execute(w, PageData{Result: template.HTML(result)})}
-
-
-func main(){
+func main() {
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8080",nil)
+	http.ListenAndServe(":8080", nil)
 }
