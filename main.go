@@ -43,6 +43,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	http.Handle("/style.css", http.FileServer(http.Dir("templates")))
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8080", nil)
 }
