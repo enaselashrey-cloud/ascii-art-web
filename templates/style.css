@@ -1,56 +1,201 @@
 body {
-  background: #0f172a;
-  font-family: Arial;
   margin: 0;
+
+ background: linear-gradient(
+  130deg,
+  #ff8c00 0%,
+  #ff4500 55%,
+  #1a1a1a 5%
+);
+  min-height: 100vh;
+  color: rgb(237, 233, 233);
+  font-family: Arial;
 }
 
-/* الكارت في النص */
-.card {
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+}
+
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.nav-item:hover {
+  color: #ff8c00;
+}
+
+.logo {
+  text-decoration: none;
+  color: #ff8c00;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* layout */
+.container {
+  display: flex;
+  padding: 30px;
+  gap: 30px;
+}
+
+.left, .right {
+  width: 50%;
+}
+
+/* الفورم */
+.form-box {
+  width: 380px;
+  padding: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+
+  backdrop-filter: blur(15px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
+}
+
+/* مربع النص */
+textarea {
   width: 350px;
-  margin: 100px auto;
-  background: #1e293b;
-  padding: 25px;
-  border-radius: 15px;
-  text-align: center;
+  min-height: 120px;
+  max-width: 100%;
+
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  resize: vertical;
 }
 
-/* inputs */
-input, select {
-  width: 90%;
-  padding: 10px;
-  margin: 8px 0;
+/* الأوبشنز جنب بعض */
+.options {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* select */
+select {
+  padding: 8px;
   border-radius: 8px;
   border: none;
 }
 
-/* color picker */
+/* color مستطيل */
 input[type="color"] {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 40px;
+  height: 30px;
+  border: none;
   padding: 0;
-  border: none;
-}
-
-/* button */
-button {
-  width: 100%;
-  padding: 12px;
-  background: #22c55e;
-  border: none;
-  border-radius: 10px;
   cursor: pointer;
 }
 
-button:hover {
-  background: #16a34a;
+/* الزرار */
+button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #ff8c00;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+button {
+  width: 150px;
+  align-self: center; /* 👈 يخليه في النص */
 }
 
-/* result */
-pre {
-  margin-top: 20px;
-  background: black;
+button:hover {
+  background: #ff6a00;
+}
+
+.fonts {
+  display: flex;
+  gap: 10px;
+}
+.fonts label {
+  background: rgba(255,255,255,0.1);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* نخبي الدائرة */
+.fonts input {
+  display: none;
+}
+
+/* لما يتختار */
+.fonts input:checked + span {
+  color: orange;
+}
+
+.colors {
+  display: none; /* 👈 مهم */
+  position: absolute;
+  top: 40px;
+
+  background: rgba(0,0,0,0.8);
   padding: 10px;
   border-radius: 10px;
-  color: white;
+
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 120px;
+}
+
+.color-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* الزرار */
+.color-button {
+  padding: 8px 15px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* القائمة */
+
+
+/* كل لون */
+.colors span {
+  width: 25px;
+  height: 25px;
+  display: block;
+  border-radius: 6px;
+}
+
+/* نخبي الراديو */
+.colors input {
+  display: none;
+}
+
+/* لما تختاري */
+.colors input:checked + span {
+  outline: 2px solid white;
+}
+.color-wrapper {
+  position: relative;
+}
+.colors.show {
+  display: flex;
 }

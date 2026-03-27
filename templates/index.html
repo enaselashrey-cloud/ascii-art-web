@@ -1,37 +1,137 @@
 <!DOCTYPE html>
 <html>
   <head>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <meta charset="UTF-8"> <!-- 👈 يدعم العربي وأي لغة -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 👈 موبايل -->
 
-<div class="card">
+  <link rel="stylesheet" href="style.css">
+</head>
+  <body>
+ <div class="navbar">
+
+  <!-- الشمال -->
+  <div class="nav-left">
+    <a href="/" class="logo">ASCII</a>
+  </div>
+
+  <!-- اليمين -->
+  <div class="nav-right">
+    <a href="/about" class="nav-item">About</a>
+    <a href="/history" class="nav-item">History</a>
+    <a href="/contact" class="nav-item">Contact us</a>
+  </div>
+
+</div>
+<div class="container">
+
+  <!-- الفورم (شمال) -->
+  <div class="left">
+    <h3>Generate your ASCII</h3>
 
 <form method="POST">
 
-<input type="text" name="text" placeholder="اكتب هنا">
+  <div class="form-box">
 
-<br><br>
+    <!-- مربع النص -->
+    <textarea name="text" placeholder="write your ascii here..!"></textarea>
 
-<select name="font">
-  <option value="standard">standard</option>
-  <option value="shadow">shadow</option>
-  <option value="thinkertoy">thinkertoy</option>
-</select>
+    <!-- الأوبشنز -->
+    <div class="options">
 
-<br><br>
+<div class="fonts">
 
-<input type="color" name="color" value="#22c55e">
+  <label>
+    <input type="radio" name="font" value="standard" checked>
+     <span>standard</span>
+  </label>
 
-<br><br>
+  <label>
+    <input type="radio" name="font" value="shadow">
+    <span>shadow</span>
+  </label>
 
-<button>Send</button>
-
-</form>
-
-<pre>{{.Result}}</pre>
+  <label>
+    <input type="radio" name="font" value="thinkertoy">
+    <span>thinkertoy</span>
+  </label>
 
 </div>
 
+<div class="color-wrapper">
+
+  <!-- زرار -->
+  <div class="color-button" onclick="toggleColors()">
+   
+  </div>
+
+  <!-- قائمة الألوان -->
+  <div class="colors" id="colorsMenu">
+
+    <label>
+      <input type="radio" name="color" value="#ff0000">
+      <span style="background:#ff0000"></span>
+    </label>
+
+    <label>
+      <input type="radio" name="color" value="#00ff00">
+      <span style="background:#00ff00"></span>
+    </label>
+
+    <label>
+      <input type="radio" name="color" value="#0000ff">
+      <span style="background:#0000ff"></span>
+    </label>
+
+    <label>
+      <input type="radio" name="color" value="#ffff00">
+      <span style="background:#ffff00"></span>
+    </label>
+
+    <label>
+      <input type="radio" name="color" value="#ff00ff">
+      <span style="background:#ff00ff"></span>
+    </label>
+
+    <label>
+      <input type="radio" name="color" value="#00ffff">
+      <span style="background:#00ffff"></span>
+    </label>
+
+  </div>
+
+</div>
+    </div>
+     <button>Generate</button>
+  </div>
+
+</form>
+  <!-- الجاليري (يمين) -->
+ 
+
+</div>
+ <div class="right">
+    <h3>Gallery</h3>
+  </div>
+<script>
+function toggleColors() {
+  const menu = document.getElementById("colorsMenu");
+  menu.classList.toggle("show");
+}
+
+const colorInputs = document.querySelectorAll('input[name="color"]');
+
+colorInputs.forEach(input => {
+  input.addEventListener("change", () => {
+    const menu = document.getElementById("colorsMenu");
+    const button = document.querySelector(".color-button");
+
+    button.style.background = input.value; // 👈 يغير لون الزرار
+    menu.classList.remove("show"); // 👈 يقفل القائمة
+  });
+});
+</script>
 </body>
 </html>
+
+
+
