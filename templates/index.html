@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="card">
+
 <form method="POST">
-<input type="text" name="text">
+
+<input type="text" name="text" placeholder="اكتب هنا">
 
 <br><br>
 
@@ -18,18 +21,17 @@
 
 <br><br>
 
-<select name="color">
-  <option value="">no color</option>
-  <option value="red">red</option>
-  <option value="green">green</option>
-  <option value="blue">blue</option>
-</select>
+<input type="color" name="color" value="#22c55e">
+
+<br><br>
 
 <button>Send</button>
 
 </form>
-<br><br>
 
 <pre>{{.Result}}</pre>
+
+</div>
+
 </body>
 </html>
