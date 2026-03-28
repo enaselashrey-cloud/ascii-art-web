@@ -29,11 +29,12 @@
     <h3>Generate your ASCII</h3>
 
 <form method="POST">
+  
 
   <div class="form-box">
 
     <!-- مربع النص -->
-    <textarea name="text" placeholder="write your ascii here..!"></textarea>
+    <textarea name="text" placeholder="write your ascii here..!">{{.Text}}</textarea>
 
     <!-- الأوبشنز -->
     <div class="options">
@@ -105,6 +106,9 @@
   </div>
 
 </form>
+<div class="result-box">
+  <pre>{{.Result}}</pre>
+</div>
   <!-- الجاليري (يمين) -->
  
 
@@ -129,7 +133,20 @@ colorInputs.forEach(input => {
     menu.classList.remove("show"); // 👈 يقفل القائمة
   });
 });
+const textarea = document.querySelector("textarea");
+
+textarea.addEventListener("input", () => {
+  if (textarea.value.length > 0) {
+    textarea.style.textAlign = "left"; // 👈 لما تكتبي
+  } else {
+    textarea.style.textAlign = "center"; // 👈 لو مسحتي
+  }
+  
+});
+
+
 </script>
+
 </body>
 </html>
 

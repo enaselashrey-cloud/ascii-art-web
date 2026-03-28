@@ -9,6 +9,7 @@ import (
 
 type PageData struct {
 	Result template.HTML
+	Text   string
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -39,7 +40,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		result = "<span style='color:" + color + "'>" + result + "</span>"
 	}
 
-	tmpl.Execute(w, PageData{Result: template.HTML(result)})
+	tmpl.Execute(w, PageData{Result: template.HTML(result),
+	Text:   text,
+	})
 }
 
 func main() {

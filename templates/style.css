@@ -81,6 +81,14 @@ textarea {
   border-radius: 10px;
   border: none;
   resize: vertical;
+  text-align: center;        /* يخلي الكلام في النص */
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+textarea::placeholder {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
 }
 
 /* الأوبشنز جنب بعض */
@@ -140,9 +148,16 @@ button:hover {
 .fonts input {
   display: none;
 }
+.fonts span {
+  color: white;
+  font-weight: bold;
+}
 
 /* لما يتختار */
 .fonts input:checked + span {
+  color: orange;
+}
+.fonts label:hover span {
   color: orange;
 }
 
@@ -198,4 +213,24 @@ button:hover {
 }
 .colors.show {
   display: flex;
+}
+.result-box {
+  margin-top: 25px;
+  padding: 20px;
+
+  background: rgba(0,0,0,0.4);
+  border-radius: 15px;
+
+  backdrop-filter: blur(10px);
+
+  width: 380px;
+}
+
+/* النص جوه */
+.result-box pre {
+  white-space: pre;
+  font-family: monospace;
+  font-size: 14px;
+
+ text-align: center; ;
 }
