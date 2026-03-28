@@ -230,7 +230,8 @@ button:hover {
 .result-box pre {
   white-space: pre;
   font-family: monospace;
-  font-size: 14px;
+  font-size: 10px;
+  font-weight: bold;
 
  text-align: center; ;
 }
