@@ -238,7 +238,7 @@ button:hover {
 
 /* الصورة في الكورنر */
 .right {
-  position: flex;   /* 👈 تثبيت */
+  position: fixed;   /* 👈 تثبيت */
   bottom: 100px;      /* 👈 تحت */
   right: 100px;       /* 👈 يمين */
 
@@ -261,4 +261,40 @@ button:hover {
 .gallery-img:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+}
+
+.ascii-history-text {
+  position: fixed;
+  right: 40px;
+  top: 120px;
+
+  width: 320px;
+
+  color: white;
+
+  line-height: 1.9;
+  font-size: 15px;
+
+  text-align: right;
+
+  opacity: 0.95;
+}
+
+/* العنوان */
+.ascii-history-text h2 {
+  color: #ff8c00;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* الفقرات */
+.ascii-history-text p {
+  margin-bottom: 12px;
+}
+
+/* الجملة المهمة */
+.highlight {
+  color: hsl(26, 100%, 50%);
+  font-weight: bold;
+  font-size: 25px;
 }
