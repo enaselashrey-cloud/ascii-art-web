@@ -282,7 +282,7 @@ button:hover {
 
 /* العنوان */
 .ascii-history-text h2 {
-  color: #ff8c00;
+  color:hsl(25, 73%, 78%);
   margin-bottom: 15px;
   font-size: 20px;
 }
@@ -294,7 +294,88 @@ button:hover {
 
 /* الجملة المهمة */
 .highlight {
-  color: hsl(26, 100%, 50%);
+  color: hsl(25, 73%, 78%);
   font-weight: bold;
   font-size: 25px;
+}
+/* animation setup */
+.ascii-history-text p {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* 👈 نزود الحركة */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ترتيب الظهور */
+.ascii-history-text p:nth-child(2) {
+  animation: fadeUp 1.2s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+.ascii-history-text p:nth-child(3) {
+  animation: fadeUp 1.2s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+.ascii-history-text p:nth-child(4) {
+  animation: fadeUp 1.2s ease-out forwards;
+  animation-delay: 1.8s;
+}
+
+.ascii-history-text p:nth-child(5) {
+  animation: fadeUp 1.2s ease-out forwards;
+  animation-delay: 2.4s;
+}
+
+.ascii-history-text p:nth-child(6) {
+  animation: fadeUp 1.2s ease-out forwards;
+  animation-delay: 3s;
+}
+
+.highlight {
+  animation: fadeUp 1.2s ease-out forwards;
+  animation-delay: 3.6s;
+}
+
+/* العنوان */
+.ascii-history-text h2 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+  }
+
+  .right {
+    position: static;   /* 👈 أهم سطر */
+    order: 3;           /* 👈 يخليها آخر حاجة */
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .ascii-history-text {
+    position: static;   /* 👈 يرجعه طبيعي */
+    order: 2;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .left {
+    order: 1;
+  }
+
 }
