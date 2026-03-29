@@ -46,6 +46,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.Handle("/style.css", http.FileServer(http.Dir("templates")))
 	http.HandleFunc("/", handler)
 	http.ListenAndServe(":8080", nil)

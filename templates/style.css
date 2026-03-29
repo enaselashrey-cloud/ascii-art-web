@@ -235,3 +235,30 @@ button:hover {
 
  text-align: center; ;
 }
+
+/* الصورة في الكورنر */
+.right {
+  position: flex;   /* 👈 تثبيت */
+  bottom: 100px;      /* 👈 تحت */
+  right: 100px;       /* 👈 يمين */
+
+  z-index: 999;
+}
+
+/* الصورة */
+.gallery-img {
+  width: 120px;       /* 👈 تتحكمي في الحجم */
+  height: auto;
+
+  border-radius: 15px;
+
+  object-fit: cover;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+
+  transition: 0.3s;
+}
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+}

@@ -61,16 +61,17 @@
 <div class="color-wrapper">
 
   <!-- زرار -->
-  <div class="color-button" onclick="toggleColors()">
-   
-  </div>
+<div class="color-button" onclick="toggleColors()">
+  🎨
+</div>
+ 
 
   <!-- قائمة الألوان -->
   <div class="colors" id="colorsMenu">
 
     <label>
       <input type="radio" name="color" value="#ff0000">
-      <span style="background:#ff0000"></span>
+      <span style="background:#df0606"></span>
     </label>
 
     <label>
@@ -109,13 +110,14 @@
 <div class="result-box">
   <pre>{{.Result}}</pre>
 </div>
-  <!-- الجاليري (يمين) -->
- 
+</div>
+
+<div class="right">
+    <img src="/static/flower.png">
+  </div>  
 
 </div>
- <div class="right">
-    <h3>Gallery</h3>
-  </div>
+
 <script>
 function toggleColors() {
   const menu = document.getElementById("colorsMenu");
