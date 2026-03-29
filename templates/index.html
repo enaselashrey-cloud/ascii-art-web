@@ -172,6 +172,7 @@ colorInputs.forEach(input => {
 
     button.style.background = input.value; // 👈 يغير لون الزرار
     menu.classList.remove("show"); // 👈 يقفل القائمة
+    button.textContent = ""; // يمسح 🎨
   });
 });
 const textarea = document.querySelector("textarea");
@@ -184,6 +185,14 @@ textarea.addEventListener("input", () => {
   }
   
 });
+
+window.onload = () => {
+  const textarea = document.querySelector("textarea");
+
+  if (performance.navigation.type === 1) {
+    textarea.value = ""; // 👈 يفضي لو refresh
+  }
+};
 
 
 </script>
