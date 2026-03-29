@@ -14,28 +14,46 @@ type PageData struct {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 
-	tmpl := template.Must(template.ParseFiles("templates/index.html"))
+tmpl, err := template.ParseFiles(
+    "templates/index.html",
+    "templates/navbar.html",
+)
 
+if err != nil {
+    http.Error(w, err.Error(), 500)
+    return
+}
 	text := r.FormValue("text")
 	font := r.FormValue("font")
 	color := r.FormValue("color")
 
 	if text == "" {
-		tmpl.Execute(w, nil)
-		return
-	}
+    err = tmpl.Execute(w, PageData{})
+    if err != nil {
+        http.Error(w, err.Error(), 500)
+    }
+    return
+}
 
 	if font == "" {
 		font = "standard"
 	}
 
-	banner, _ := ascii.NewBanner(font)
+	banner, err := ascii.NewBanner(font)
+if err != nil {
+    http.Error(w, err.Error(), 500)
+    return
+}
 
 	opts := ascii.Options{
 		Text: text,
 	}
 
-	result, _ := ascii.Render(banner, opts)
+	result, err := ascii.Render(banner, opts)
+if err != nil {
+    http.Error(w, err.Error(), 500)
+    return
+}
 	if color != "" {
 		result = "<span style='color:" + color + "'>" + result + "</span>"
 	}
