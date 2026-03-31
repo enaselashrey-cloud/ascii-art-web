@@ -15,8 +15,9 @@ type PageData struct {
 func handler(w http.ResponseWriter, r *http.Request) {
 
 tmpl, err := template.ParseFiles(
+	"templates/layout.html",
+	 "templates/navbar.html",
     "templates/index.html",
-    "templates/navbar.html",
 )
 
 if err != nil {
@@ -28,7 +29,7 @@ if err != nil {
 	color := r.FormValue("color")
 
 	if text == "" {
-    err = tmpl.Execute(w, PageData{})
+    err = tmpl.ExecuteTemplate(w, "layout", PageData{})
     if err != nil {
         http.Error(w, err.Error(), 500)
     }
@@ -58,14 +59,35 @@ if err != nil {
 		result = "<span style='color:" + color + "'>" + result + "</span>"
 	}
 
-	tmpl.Execute(w, PageData{Result: template.HTML(result),
+	tmpl.ExecuteTemplate(w, "layout", PageData{Result: template.HTML(result),
 	Text:   text,
 	})
+}
+
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles(
+		"templates/layout.html",
+		"templates/navbar.html",
+		"templates/about.html", // 👈 الصفحة الجديدة
+	)
+
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+
+	err = tmpl.ExecuteTemplate(w, "layout", nil)
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+	}
 }
 
 func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.Handle("/style.css", http.FileServer(http.Dir("templates")))
+
 	http.HandleFunc("/", handler)
+	http.HandleFunc("/about", aboutHandler) // 👈 دي أهم سطر
+
 	http.ListenAndServe(":8080", nil)
 }

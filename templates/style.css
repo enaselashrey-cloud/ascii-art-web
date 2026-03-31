@@ -48,6 +48,7 @@ body {
   display: flex;
   padding: 30px;
   gap: 30px;
+  
 }
 
 .left, .right {
@@ -255,7 +256,6 @@ button:hover {
   bottom: 100px;      /* 👈 تحت */
   right: 100px;       /* 👈 يمين */
 
-  z-index: 999;
 }
 
 /* الصورة */
@@ -349,4 +349,15 @@ button:hover {
     order: 1;
   }
 
+}
+
+.about-box {
+  display: flex;
+  flex-direction: column; /* 👈 ده السحر */
+  gap: 10px;
+
+}
+
+.about-box {
+  width: 600px;
 }

@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta charset="UTF-8"> <!-- 👈 يدعم العربي وأي لغة -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 👈 موبايل -->
-
-  <link rel="stylesheet" href="style.css">
-</head>
-  <body>
-    {{template "navbar" .}}
-
+{{define "content"}}
 <div class="container">
 
   <!-- الفورم (شمال) -->
@@ -184,8 +174,6 @@ window.onload = () => {
 
 </script>
 
-</body>
-</html>
-
+{{end}}
 
 
