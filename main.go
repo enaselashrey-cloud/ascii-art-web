@@ -46,11 +46,9 @@ if err != nil {
     return
 }
 
-	opts := ascii.Options{
-		Text: text,
-	}
+	
 
-	result, err := ascii.Render(banner, opts)
+	result, err := ascii.Render(banner, text)
 if err != nil {
     http.Error(w, err.Error(), 500)
     return

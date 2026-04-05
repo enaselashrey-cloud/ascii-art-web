@@ -385,13 +385,14 @@ body::after {
 
 }
 
-.about-box {
+.about-container {
   display: flex;
   flex-direction: column; /* 👈 ده السحر */
   gap: 10px;
 
 }
 
-.about-box {
+.about-container {
   width: 600px;
+  margin-left: 10px;
 }

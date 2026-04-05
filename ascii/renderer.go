@@ -6,40 +6,20 @@ import (
 
 
 
-func Render(banner *Banner, opts Options) (string, error){
+func Render(banner *Banner, text string) (string, error){
 
-	if opts.Text == "" {
-		return "", nil
-	}
-
-	if opts.Text == `\n` {
-		return "\n", nil
-	}
+	
 	
 
-	lines := strings.Split(opts.Text, `\n`)
+	lines := strings.Split(text, `\n`)
 
 	var result strings.Builder
 
-	// تجهيز أدوات التلوين مرة واحدة
-	colorCode := ""
-	coloredPos := map[int]bool{}
-	charIndex := 0
-
-	if opts.Color != "" {
-		if c, ok := getColorCode(opts.Color); ok {
-			colorCode = c
-		}
-	}
-
-	if opts.Color != "" && opts.Substring != "" {
-		coloredPos = getColoredPosition(opts.Text, opts.Substring)
-	}
+	
 //هيعمل سطر فاضي ف حالة وجود نيولاين
 	for _, line := range lines {
 		if line == "" {
 			result.WriteByte('\n')
-			charIndex++ // علشان \n
 			continue
 		}
 
@@ -53,16 +33,8 @@ func Render(banner *Banner, opts Options) (string, error){
 
 			for i := range 8 {
 
-				//التلوين
-				if colorCode != "" &&
-					(opts.Substring == "" || coloredPos[charIndex]) {
-
-					output[i] += colorCode + rows[i] + ansiReset
-				} else {
-					output[i] += rows[i]
-				}
+				output[i] += rows[i]
 			}
-			charIndex++
 		}
 
 		for _, asciiline := range output {
