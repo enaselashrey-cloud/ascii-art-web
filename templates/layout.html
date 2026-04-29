@@ -7,12 +7,22 @@
 </head>
 <body>
 
-  {{template "navbar" .}}
+  <div class="navbar">
+
+  <div class="nav-left">
+    <a href="/" class="logo">ASCII</a>
+  </div>
+
+  <div class="nav-right">
+    <a href="/about" class="nav-item">About</a>
+    <a href="/history" class="nav-item">History</a>
+    <a href="/contact" class="nav-item">Contact us</a>
+  </div>
+
+</div>
 
   {{template "content" .}}
-  <!-- <div class="right">
-    <img src="/static/flower.png">
-  </div>   -->
+ 
 <script src="/static/main.js"></script>
 </body>
 </html>

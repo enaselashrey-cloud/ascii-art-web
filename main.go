@@ -16,7 +16,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 tmpl, err := template.ParseFiles(
 	"templates/layout.html",
-	 "templates/navbar.html",
     "templates/index.html",
 )
 
@@ -65,8 +64,7 @@ if err != nil {
 func aboutHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl, err := template.ParseFiles(
 		"templates/layout.html",
-		"templates/navbar.html",
-		"templates/about.html", // 👈 الصفحة الجديدة
+		"templates/about.html",
 	)
 
 	if err != nil {
@@ -85,7 +83,7 @@ func main() {
 	http.Handle("/style.css", http.FileServer(http.Dir("templates")))
 
 	http.HandleFunc("/", handler)
-	http.HandleFunc("/about", aboutHandler) // 👈 دي أهم سطر
-
+	http.HandleFunc("/about", aboutHandler) 
+	
 	http.ListenAndServe(":8080", nil)
 }
