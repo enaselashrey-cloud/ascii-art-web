@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  
 
  background: linear-gradient(
   130deg,
@@ -301,9 +302,11 @@ button:hover {
 }
 
 .ascii-history-text {
-  position: fixed;
+  position: static;   /* 👈 يرجع طبيعي */
   right: 40px;
   top: 120px;
+   margin-left: auto;   /* يدفع العنصر إلى أقصى اليمين */
+  margin-right: 40px;  /* مسافة بسيطة من الحافة اليمنى */
 
   width: 320px;
 

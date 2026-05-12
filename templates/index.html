@@ -48,7 +48,7 @@
 
     <label>
       <input type="radio" name="color" value="#ff0000">
-      <span style="background:#df0606"></span>
+      <span style="background:#f60303"></span>
     </label>
 
     <label>
@@ -134,45 +134,7 @@
 
 
 
-<script>
-function toggleColors() {
-  const menu = document.getElementById("colorsMenu");
-  menu.classList.toggle("show");
-}
 
-const colorInputs = document.querySelectorAll('input[name="color"]');
-
-colorInputs.forEach(input => {
-  input.addEventListener("change", () => {
-    const menu = document.getElementById("colorsMenu");
-    const button = document.querySelector(".color-button");
-
-    button.style.background = input.value; // 👈 يغير لون الزرار
-    menu.classList.remove("show"); // 👈 يقفل القائمة
-    button.textContent = ""; // يمسح 🎨
-  });
-});
-const textarea = document.querySelector("textarea");
-
-textarea.addEventListener("input", () => {
-  if (textarea.value.length > 0) {
-    textarea.style.textAlign = "left"; // 👈 لما تكتبي
-  } else {
-    textarea.style.textAlign = "center"; // 👈 لو مسحتي
-  }
-  
-});
-
-window.onload = () => {
-  const textarea = document.querySelector("textarea");
-
-  if (performance.navigation.type === 1) {
-    textarea.value = ""; // 👈 يفضي لو refresh
-  }
-};
-
-
-</script>
 
 {{end}}
 
