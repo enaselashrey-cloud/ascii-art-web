@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta charset="UTF-8"> <!-- 👈 يدعم العربي وأي لغة -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 👈 موبايل -->
-
-  <link rel="stylesheet" href="style.css">
-</head>
-  <body>
- <div class="navbar">
-
-  <!-- الشمال -->
-  <div class="nav-left">
-    <a href="/" class="logo">ASCII</a>
-  </div>
-
-  <!-- اليمين -->
-  <div class="nav-right">
-    <a href="/about" class="nav-item">About</a>
-    <a href="/history" class="nav-item">History</a>
-    <a href="/contact" class="nav-item">Contact us</a>
-  </div>
-
-</div>
+{{define "content"}}
 <div class="container">
 
   <!-- الفورم (شمال) -->
@@ -113,9 +90,9 @@
 </div>
 </div>
 
-<div class="right">
+<!-- <div class="right">
     <img src="/static/flower.png">
-  </div>  
+  </div>   -->
   <div class="ascii-history-text">
 
   <h2>يعني إيه ASCII Art؟</h2>
@@ -197,8 +174,6 @@ window.onload = () => {
 
 </script>
 
-</body>
-</html>
-
+{{end}}
 
 

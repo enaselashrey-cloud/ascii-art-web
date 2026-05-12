@@ -1,0 +1,32 @@
+{{define "layout"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+
+  <div class="navbar">
+
+    <div class="nav-left">
+      <a href="/" class="logo">ASCII</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="/about" class="nav-item">About</a>
+      <a href="/history" class="nav-item">History</a>
+      <a href="/contact" class="nav-item">Contact us</a>
+    </div>
+
+  </div>
+
+  {{template "content" .}}
+
+  <script src="/static/main.js"></script>
+</body>
+
+</html>
+{{end}}

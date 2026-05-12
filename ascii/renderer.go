@@ -1,75 +1,51 @@
 package ascii
 
 import (
+	"fmt"
+	"os"
 	"strings"
 )
 
-
-
-func Render(banner *Banner, opts Options) (string, error){
-
-	if opts.Text == "" {
-		return "", nil
+func LoadBanner(font string) ([]string, error) {
+	data, err := os.ReadFile("ascii/fonts/" + font + ".txt")
+	if err != nil {
+		return nil, err
 	}
 
-	if opts.Text == `\n` {
-		return "\n", nil
-	}
-	
+	lines := strings.Split(string(data), "\n")
 
-	lines := strings.Split(opts.Text, `\n`)
+	return lines, nil
+}
 
-	var result strings.Builder
+func RenderAscii(text string, lines []string) (string, error) {
 
-	// تجهيز أدوات التلوين مرة واحدة
-	colorCode := ""
-	coloredPos := map[int]bool{}
-	charIndex := 0
+	inputLines := strings.Split(strings.ReplaceAll(text, "\r\n", "\n"), "\n")
+	var output strings.Builder
 
-	if opts.Color != "" {
-		if c, ok := getColorCode(opts.Color); ok {
-			colorCode = c
-		}
-	}
-
-	if opts.Color != "" && opts.Substring != "" {
-		coloredPos = getColoredPosition(opts.Text, opts.Substring)
-	}
-//هيعمل سطر فاضي ف حالة وجود نيولاين
-	for _, line := range lines {
+	for _, line := range inputLines {
 		if line == "" {
-			result.WriteByte('\n')
-			charIndex++ // علشان \n
+			output.WriteByte('\n')
 			continue
 		}
 
-		output := make([]string, 8)
+		for row := 0; row < 8; row++ {
+			for _, ch := range line {
 
-		for _, ch := range line {
-			rows, err := banner.GetChar(ch)
-			if err != nil {
-				return "", err
-			}
-
-			for i := range 8 {
-
-				//التلوين
-				if colorCode != "" &&
-					(opts.Substring == "" || coloredPos[charIndex]) {
-
-					output[i] += colorCode + rows[i] + ansiReset
-				} else {
-					output[i] += rows[i]
+				if ch < 32 || ch > 126 {
+					return "", fmt.Errorf("unsupported character")
 				}
-			}
-			charIndex++
-		}
 
-		for _, asciiline := range output {
-			result.WriteString(asciiline)
-			result.WriteByte('\n')
+				index := (int(ch)-32)*9 + row + 1
+
+				if index >= len(lines) {
+					return "", fmt.Errorf("invalid banner")
+				}
+
+				output.WriteString(lines[index])
+			}
+			output.WriteByte('\n')
 		}
 	}
 
-	return result.String(), nil
+	return output.String(), nil
 }

@@ -1,15 +1,39 @@
 body {
   margin: 0;
 
- background: linear-gradient(
-  130deg,
-  #ff8c00 0%,
-  #ff4500 55%,
-  #1a1a1a 5%
-);
+  background: linear-gradient(130deg,
+      #ff8c00 0%,
+      #ff4500 55%,
+      #1a1a1a 5%);
   min-height: 100vh;
   color: rgb(237, 233, 233);
   font-family: Arial;
+  position: relative;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+
+
+  bottom: 35%;
+  right: 25%;
+
+  width: 22vw;
+  height: 22vw;
+
+  max-width: 300px;
+  max-height: 300px;
+
+  background: url("/static/flower.png") no-repeat center;
+  background-size: contain;
+
+
+  pointer-events: none;
+
+  z-index: -1;
+  /* 👈 أهم سطر */
 }
 
 /* navbar */
@@ -18,7 +42,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .nav-right {
@@ -48,9 +72,11 @@ body {
   display: flex;
   padding: 30px;
   gap: 30px;
+
 }
 
-.left, .right {
+.left,
+.right {
   width: 50%;
 }
 
@@ -68,7 +94,7 @@ body {
 
   backdrop-filter: blur(15px);
 
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); 
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* مربع النص */
@@ -81,10 +107,12 @@ textarea {
   border-radius: 10px;
   border: none;
   resize: vertical;
-  text-align: left;        /* يخلي الكلام في الشمال */
+  text-align: left;
+  /* يخلي الكلام في الشمال */
   font-size: 25px;
   transition: all 0.2s ease;
 }
+
 textarea::placeholder {
   text-align: center;
   font-size: 18px;
@@ -124,9 +152,11 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+
 button {
   width: 150px;
-  align-self: center; /* 👈 يخليه في النص */
+  align-self: center;
+  /* 👈 يخليه في النص */
 }
 
 button:hover {
@@ -137,8 +167,9 @@ button:hover {
   display: flex;
   gap: 10px;
 }
+
 .fonts label {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   padding: 6px 10px;
   border-radius: 8px;
   cursor: pointer;
@@ -148,25 +179,28 @@ button:hover {
 .fonts input {
   display: none;
 }
+
 .fonts span {
   color: white;
   font-weight: bold;
 }
 
 /* لما يتختار */
-.fonts input:checked + span {
+.fonts input:checked+span {
   color: orange;
 }
+
 .fonts label:hover span {
   color: orange;
 }
 
 .colors {
-  display: none; /* 👈 مهم */
+  display: none;
+  /* 👈 مهم */
   position: absolute;
   top: 40px;
 
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   padding: 10px;
   border-radius: 10px;
 
@@ -182,15 +216,17 @@ button:hover {
 
 /* الزرار */
 .color-button {
-  width: 45px;          /* 👈 حجم ثابت */
+  width: 45px;
+  /* 👈 حجم ثابت */
   height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 22px;      /* 👈 يكبر الإيموجي */
-  
-  background: rgba(255,255,255,0.1);
+  font-size: 22px;
+  /* 👈 يكبر الإيموجي */
+
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   cursor: pointer;
 
@@ -218,20 +254,23 @@ button:hover {
 }
 
 /* لما تختاري */
-.colors input:checked + span {
+.colors input:checked+span {
   outline: 2px solid white;
 }
+
 .color-wrapper {
   position: relative;
 }
+
 .colors.show {
   display: flex;
 }
+
 .result-box {
   margin-top: 25px;
   padding: 20px;
 
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 15px;
 
   backdrop-filter: blur(10px);
@@ -246,34 +285,39 @@ button:hover {
   font-size: 10px;
   font-weight: bold;
 
- text-align: center; ;
+  text-align: center;
+  ;
 }
 
 /* الصورة في الكورنر */
 .right {
-  position: fixed;   /* 👈 تثبيت */
-  bottom: 100px;      /* 👈 تحت */
-  right: 100px;       /* 👈 يمين */
+  position: fixed;
+  /* 👈 تثبيت */
+  bottom: 100px;
+  /* 👈 تحت */
+  right: 100px;
+  /* 👈 يمين */
 
-  z-index: 999;
 }
 
 /* الصورة */
 .gallery-img {
-  width: 120px;       /* 👈 تتحكمي في الحجم */
+  width: 120px;
+  /* 👈 تتحكمي في الحجم */
   height: auto;
 
   border-radius: 15px;
 
   object-fit: cover;
 
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 
   transition: 0.3s;
 }
+
 .gallery-img:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.7);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
 }
 
 .ascii-history-text {
@@ -295,7 +339,7 @@ button:hover {
 
 /* العنوان */
 .ascii-history-text h2 {
-  color:hsl(25, 73%, 78%);
+  color: hsl(25, 73%, 78%);
   margin-bottom: 15px;
   font-size: 20px;
 }
@@ -311,6 +355,7 @@ button:hover {
   font-weight: bold;
   font-size: 25px;
 }
+
 /* animation setup */
 .ascii-history-text p {
   opacity: 1;
@@ -326,20 +371,33 @@ button:hover {
 
 
 @media (max-width: 768px) {
+  body::after {
+    bottom: 2%;
+    right: 50%;
+    transform: translateX(50%);
+
+    width: 40vw;
+    height: 40vw;
+
+    opacity: 0.4;
+  }
 
   .container {
     flex-direction: column;
   }
 
   .right {
-    position: static;   /* 👈 أهم سطر */
-    order: 3;           /* 👈 يخليها آخر حاجة */
+    position: static;
+    /* 👈 أهم سطر */
+    order: 3;
+    /* 👈 يخليها آخر حاجة */
     text-align: center;
     margin-top: 20px;
   }
 
   .ascii-history-text {
-    position: static;   /* 👈 يرجعه طبيعي */
+    position: static;
+    /* 👈 يرجعه طبيعي */
     order: 2;
     width: 100%;
     margin-top: 20px;
@@ -349,4 +407,17 @@ button:hover {
     order: 1;
   }
 
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  /* 👈 ده السحر */
+  gap: 10px;
+
+}
+
+.about-container {
+  width: 600px;
+  margin-left: 10px;
 }
