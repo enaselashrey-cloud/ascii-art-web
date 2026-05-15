@@ -1,32 +1,62 @@
 {{define "layout"}}
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="static/style.css">
+  <title>ASCII Art</title>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/style.css">
+
+
 </head>
 
 <body>
 
+  <!-- Navbar -->
   <div class="navbar">
-
-    <div class="nav-left">
+    <div>
       <a href="/" class="logo">ASCII</a>
     </div>
 
-    <div class="nav-right">
+    <div>
       <a href="/about" class="nav-item">About</a>
       <a href="/history" class="nav-item">History</a>
-      <a href="/contact" class="nav-item">Contact us</a>
+      <a href="/contact" class="nav-item">Contact</a>
     </div>
+  </div>
+
+ <div class="main-layout">
+
+  <!-- الشمال: المحتوى (الفورم) -->
+  <div class="content">
+    {{template "content" .}}
+  </div>
+
+  <!-- اليمين: الصورة + السلوچان -->
+  <div class="puzzle">
+
+    <div class="text">
+      <h5>
+        LIFE <br>
+        IS <br>
+        PUZZLE
+      </h5>
+
+      <h1>We solve it..!</h1>
+    </div>
+
+    <img src="/static/image.png" class="puzzle-img">
 
   </div>
 
-  {{template "content" .}}
+</div>
 
-  <script src="/static/main.js"></script>
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2026 ASCII Art Project</p>
+  </div>
+
 </body>
-
 </html>
 {{end}}

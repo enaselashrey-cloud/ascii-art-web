@@ -1,0 +1,190 @@
+{
+    "sourceFile": "static/style.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 43,
+            "patches": [
+                {
+                    "date": 1778706357013,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1778706376395,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  col\r\n+  color: rg;\r\n }\r\n \r\n .text h2 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706381560,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color: rg;\r\n+  color: rgba(3, 21, 38, 1;\r\n }\r\n \r\n .text h2 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706387400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color: rgba(3, 21, 38, 1;\r\n+  color: rgba(, 21, 38, 1);\r\n }\r\n \r\n .text h2 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706395028,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color: rgba(, 21, 38, 1);\r\n+  color: rgba(213, 211, 38, 1);\r\n }\r\n \r\n .text h2 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706400242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color: rgba(213, 211, 38, 1);\r\n+  color: rgba(213, 194, 38, 1);\r\n }\r\n \r\n .text h2 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706405744,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color: rgba(213, 194, 38, 1);\r\n+  color: rgba(213, 194, 38182, 1);\r\n }\r\n \r\n .text h2 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706413586,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color: rgba(213, 194, 38182, 1);\r\n+  color: rgba(213, 194, 182, 100);\r\n }\r\n \r\n .text h2 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706449085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -59,7 +59,7 @@\n   line-height: 1.2;\r\n   color: rgba(213, 194, 182, 100);\r\n }\r\n \r\n-.text h2 {\r\n+.text h5 {\r\n   margin-top: 10px;\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1778706462126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,8 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color: rgba(213, 194, 182, 100);\r\n }\r\n \r\n .text h5 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706467701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,12 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n+  \r\n }\r\n \r\n .text h5 {\r\n   margin-top: 10px;\r\n+    color: rgba(213, 194, 182, 100);\r\n+\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1778706482679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,8 +57,9 @@\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n   \r\n+\r\n }\r\n \r\n .text h5 {\r\n   margin-top: 10px;\r\n"
+                },
+                {
+                    "date": 1778706491469,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  \r\n+  c\r\n \r\n }\r\n \r\n .text h5 {\r\n"
+                },
+                {
+                    "date": 1778706496615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  c\r\n+  color :\r\n \r\n }\r\n \r\n .text h5 {\r\n"
+                },
+                {
+                    "date": 1778706502113,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color :\r\n+  color : rgb(red, green, blue)\r\n \r\n }\r\n \r\n .text h5 {\r\n"
+                },
+                {
+                    "date": 1778706509996,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color : rgb(red, green, blue)\r\n+  color : rgb(233, 139, blue)\r\n \r\n }\r\n \r\n .text h5 {\r\n"
+                },
+                {
+                    "date": 1778706524203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,9 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color : rgb(233, 139, blue)\r\n+  color : rgb(233, 139, 86,100)\r\n \r\n }\r\n \r\n .text h5 {\r\n"
+                },
+                {
+                    "date": 1778706544239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,13 +56,13 @@\n \r\n .text h1 {\r\n   margin: 0;\r\n   line-height: 1.2;\r\n-  color : rgb(233, 139, 86,100)\r\n+  color : rgb(233, 139, 86,100);\r\n \r\n }\r\n \r\n .text h5 {\r\n-  margin-top: 10px;\r\n+  margin-top: 1px;\r\n     color: rgba(213, 194, 182, 100);\r\n \r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1778706553481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,8 +61,8 @@\n \r\n }\r\n \r\n .text h5 {\r\n-  margin-top: 1px;\r\n+  margin-top: 10px;\r\n     color: rgba(213, 194, 182, 100);\r\n \r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1778706563826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,9 +54,9 @@\n   color: orange;\r\n }\r\n \r\n .text h1 {\r\n-  margin: 0;\r\n+  margin: ;\r\n   line-height: 1.2;\r\n   color : rgb(233, 139, 86,100);\r\n \r\n }\r\n"
+                },
+                {
+                    "date": 1778706584937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,10 +54,10 @@\n   color: orange;\r\n }\r\n \r\n .text h1 {\r\n-  margin: ;\r\n-  line-height: 1.2;\r\n+  margin: 0;\r\n+  line-height: 10;\r\n   color : rgb(233, 139, 86,100);\r\n \r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778706592501,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,9 +55,9 @@\n }\r\n \r\n .text h1 {\r\n   margin: 0;\r\n-  line-height: 10;\r\n+  line-height: ;\r\n   color : rgb(233, 139, 86,100);\r\n \r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778706647190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,15 +49,15 @@\n /* الكلام */\r\n .text {\r\n   position: absolute;\r\n   right: 80px;   /* حركي الرقم عشان تغيري مكانه */\r\n-  top: 300px;\r\n+  top: 360px;\r\n   color: orange;\r\n }\r\n \r\n .text h1 {\r\n   margin: 0;\r\n-  line-height: ;\r\n+  line-height: .5;\r\n   color : rgb(233, 139, 86,100);\r\n \r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707218800,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,15 +46,10 @@\n   width: 300px;\r\n }\r\n \r\n /* الكلام */\r\n-.text {\r\n-  position: absolute;\r\n-  right: 80px;   /* حركي الرقم عشان تغيري مكانه */\r\n-  top: 360px;\r\n-  color: orange;\r\n-}\r\n \r\n+\r\n .text h1 {\r\n   margin: 0;\r\n   line-height: .5;\r\n   color : rgb(233, 139, 86,100);\r\n"
+                },
+                {
+                    "date": 1778707255209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,15 +41,20 @@\n /* الصورة */\r\n .puzzle-img {\r\n   position: absolute;\r\n   right: 25px;   /* تتحكم في يمين/شمال */\r\n-  top: 300px;     /* تتحكم في فوق/تحت */\r\n+  top: 350px;     /* تتحكم في فوق/تحت */\r\n   width: 300px;\r\n }\r\n \r\n /* الكلام */\r\n+.text {\r\n+  position: absolute;\r\n+  right: 80px;   /* حركي الرقم عشان تغيري مكانه */\r\n+  top: 360px;\r\n+  color: orange;\r\n+}\r\n \r\n-\r\n .text h1 {\r\n   margin: 0;\r\n   line-height: .5;\r\n   color : rgb(233, 139, 86,100);\r\n"
+                },
+                {
+                    "date": 1778707266747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,9 +49,9 @@\n /* الكلام */\r\n .text {\r\n   position: absolute;\r\n   right: 80px;   /* حركي الرقم عشان تغيري مكانه */\r\n-  top: 360px;\r\n+  top: 400px;\r\n   color: orange;\r\n }\r\n \r\n .text h1 {\r\n"
+                },
+                {
+                    "date": 1778707324388,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,9 @@\n   position: absolute;\r\n   right: 25px;   /* تتحكم في يمين/شمال */\r\n   top: 350px;     /* تتحكم في فوق/تحت */\r\n   width: 300px;\r\n+  op\r\n }\r\n \r\n /* الكلام */\r\n .text {\r\n"
+                },
+                {
+                    "date": 1778707330626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n   position: absolute;\r\n   right: 25px;   /* تتحكم في يمين/شمال */\r\n   top: 350px;     /* تتحكم في فوق/تحت */\r\n   width: 300px;\r\n-  op\r\n+  opacity: 50%;\r\n }\r\n \r\n /* الكلام */\r\n .text {\r\n"
+                },
+                {
+                    "date": 1778707363086,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,9 @@\n   display: flex;\r\n   justify-content: space-between;\r\n   padding: 15px 30px;\r\n   background-color: #02101f;\r\n+  \r\n }\r\n \r\n .nav-item, .logo {\r\n   color: white;\r\n"
+                },
+                {
+                    "date": 1778707371141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   display: flex;\r\n   justify-content: space-between;\r\n   padding: 15px 30px;\r\n   background-color: #02101f;\r\n-  \r\n+  border-radius: 20;\r\n }\r\n \r\n .nav-item, .logo {\r\n   color: white;\r\n"
+                },
+                {
+                    "date": 1778707377818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   display: flex;\r\n   justify-content: space-between;\r\n   padding: 15px 30px;\r\n   background-color: #02101f;\r\n-  border-radius: 20;\r\n+  border-radius: 20px;\r\n }\r\n \r\n .nav-item, .logo {\r\n   color: white;\r\n"
+                },
+                {
+                    "date": 1778707386982,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   display: flex;\r\n   justify-content: space-between;\r\n   padding: 15px 30px;\r\n   background-color: #02101f;\r\n-  border-radius: 20px;\r\n+  border-radius: ;\r\n }\r\n \r\n .nav-item, .logo {\r\n   color: white;\r\n"
+                },
+                {
+                    "date": 1778707392289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   display: flex;\r\n   justify-content: space-between;\r\n   padding: 15px 30px;\r\n   background-color: #02101f;\r\n-  border-radius: ;\r\n+  border-radius: 20px;\r\n }\r\n \r\n .nav-item, .logo {\r\n   color: white;\r\n"
+                },
+                {
+                    "date": 1778707431187,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 15px 30px;\r\n+  padding: 20;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707440935,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 20;\r\n+  padding: 15px 30px;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707447354,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 15px 30px;\r\n+  padding: ;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707465295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: ;\r\n+  padding: 10px 10px;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707474209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 10px 10px;\r\n+  padding: 10px 20px;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707485973,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 10px 20px;\r\n+  padding: ;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707512481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: ;\r\n+  padding: 1;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707517818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 1;\r\n+  padding: 10px ;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707525825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 10px ;\r\n+  padding: 10px 100px;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707677839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n   padding: 10px 100px;\r\n-  w\r\n+  wi\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1778707742832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n /* Navbar */\r\n .navbar {\r\n   display: flex;\r\n   justify-content: space-between;\r\n-  padding: 10100px;\r\n+  padding: 1100px;\r\n   width: 90%;\r\n   height: 20px;\r\n   background-color: #02101f;\r\n   border-radius: 20px;\r\n"
+                }
+            ],
+            "date": 1778706357013,
+            "name": "Commit-0",
+            "content": "body {\r\n  margin: 0;\r\n  font-family: Arial;\r\n  background-color: rgba(3, 21, 38, 1);\r\n  color: white;\r\n\r\n  display: flex;\r\n  flex-direction: column;\r\n  min-height: 100vh;\r\n}\r\n\r\n/* Navbar */\r\n.navbar {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  padding: 15px 30px;\r\n  background-color: #02101f;\r\n}\r\n\r\n.nav-item, .logo {\r\n  color: white;\r\n  text-decoration: none;\r\n  margin-left: 15px;\r\n}\r\n\r\n/* Footer */\r\n.footer {\r\n  text-align: center;\r\n  padding: 2px;\r\n  background-color: #02101f;\r\n  margin-top: 300px;\r\n}\r\n\r\n\r\n.puzzle{\r\n  position: relative;\r\n  height: 500px;\r\n   margin-top: -80px;\r\n}\r\n\r\n/* الصورة */\r\n.puzzle-img {\r\n  position: absolute;\r\n  right: 25px;   /* تتحكم في يمين/شمال */\r\n  top: 300px;     /* تتحكم في فوق/تحت */\r\n  width: 300px;\r\n}\r\n\r\n/* الكلام */\r\n.text {\r\n  position: absolute;\r\n  right: 80px;   /* حركي الرقم عشان تغيري مكانه */\r\n  top: 300px;\r\n  color: orange;\r\n}\r\n\r\n.text h1 {\r\n  margin: 0;\r\n  line-height: 1.2;\r\n  col\r\n}\r\n\r\n.text h2 {\r\n  margin-top: 10px;\r\n}"
+        }
+    ]
+}

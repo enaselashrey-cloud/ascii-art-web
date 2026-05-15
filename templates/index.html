@@ -1,179 +1,38 @@
 {{define "content"}}
-<div class="container">
+<div class="main-box">
 
-  <!-- الفورم (شمال) -->
-  <div class="left">
-    <h3>Generate your ASCII</h3>
+  <!-- input box -->
+  <div class="input-box">
+    <textarea name="text" placeholder="Enter your text..."></textarea>
+  </div>
 
-<form method="POST">
-  
+  <!-- options -->
+ <div class="options">
 
-  <div class="form-box">
+  <!-- FONT -->
+  <div class="select-box">
+    <span>Font:</span>
+    <select name="font">
+      <option>Standard</option>
+      <option>Shadow</option>
+      <option>Thinkertoy</option>
+    </select>
+  </div>
 
-    <!-- مربع النص -->
-    <textarea name="text" placeholder="write your ascii here..!">{{.Text}}</textarea>
-
-    <!-- الأوبشنز -->
-    <div class="options">
-
-<div class="fonts">
-
-  <label>
-    <input type="radio" name="font" value="standard" checked>
-     <span>standard</span>
-  </label>
-
-  <label>
-    <input type="radio" name="font" value="shadow">
-    <span>shadow</span>
-  </label>
-
-  <label>
-    <input type="radio" name="font" value="thinkertoy">
-    <span>thinkertoy</span>
-  </label>
-
-</div>
-
-<div class="color-wrapper">
-
-  <!-- زرار -->
-<div class="color-button" onclick="toggleColors()">
-  🎨
-</div>
- 
-
-  <!-- قائمة الألوان -->
-  <div class="colors" id="colorsMenu">
-
-    <label>
-      <input type="radio" name="color" value="#ff0000">
-      <span style="background:#df0606"></span>
-    </label>
-
-    <label>
-      <input type="radio" name="color" value="#00ff00">
-      <span style="background:#00ff00"></span>
-    </label>
-
-    <label>
-      <input type="radio" name="color" value="#0000ff">
-      <span style="background:#0000ff"></span>
-    </label>
-
-    <label>
-      <input type="radio" name="color" value="#ffff00">
-      <span style="background:#ffff00"></span>
-    </label>
-
-    <label>
-      <input type="radio" name="color" value="#ff00ff">
-      <span style="background:#ff00ff"></span>
-    </label>
-
-    <label>
-      <input type="radio" name="color" value="#00ffff">
-      <span style="background:#00ffff"></span>
-    </label>
-
+  <!-- COLOR -->
+  <div class="color-box">
+    <span>Color:</span>
+    <input type="color" name="color">
   </div>
 
 </div>
-    </div>
-     <button>Generate</button>
+  <!-- button -->
+  <button type="submit">Generate</button>
+
+  <!-- output -->
+  <div class="output-box">
+    <pre>{{.Result}}</pre>
   </div>
 
-</form>
-<div class="result-box">
-  <pre>{{.Result}}</pre>
-  
 </div>
-</div>
-
-<!-- <div class="right">
-    <img src="/static/flower.png">
-  </div>   -->
-  <div class="ascii-history-text">
-
-  <h2>يعني إيه ASCII Art؟</h2>
-
-  <p>
-    هو فن قديم شوية بس عبقري  
-    فكرته ببساطة إنك ترسم صور وأشكال باستخدام حروف ورموز الكيبورد بدل الصور العادية.
-  </p>
-
-  <p>
-    زمان، في الستينات والسبعينات، الكمبيوترات ماكانش فيها جرافيكس زي دلوقتي،  
-    فالمبرمجين والفنانين بدأوا يستخدموا رموز من نظام اسمه اسكي علشان يعملوا رسومات بسيطة.
-  </p>
-
-  <p>
-    ومع الوقت، الموضوع بقى فن بجد   
-    والناس بدأت تعمل لوحات كاملة باستخدام الحروف بس!
-  </p>
-
-  <p>
-    ومع ظهور الإنترنت، الأسكي آرت انتشر أكتر   
-    وبقى وسيلة للتعبير وتزيين الإيميلات والمنتديات،  
-    وحتى الإيموشنز اللي بنستخدمها دلوقتي أصلها منه 
-  </p>
-
-  <p>
-    دلوقتي، الأسكي آرت لسه عايش   
-    وبيستخدم في البرمجة، الميمز، والتصميمات البسيطة…  
-    وناس كتير لسه بتحبه عشان فيه لمسة إبداع مختلفة ومميزة 
-  </p>
-
-  <p class="highlight">
-     ببساطة:  
-    الأسكي آرت هو إنك تعمل فن…  
-    بس بدل الفرشة والألوان، تستخدم الكيبورد
-  </p>
-
-</div>
-
-
-
-<script>
-function toggleColors() {
-  const menu = document.getElementById("colorsMenu");
-  menu.classList.toggle("show");
-}
-
-const colorInputs = document.querySelectorAll('input[name="color"]');
-
-colorInputs.forEach(input => {
-  input.addEventListener("change", () => {
-    const menu = document.getElementById("colorsMenu");
-    const button = document.querySelector(".color-button");
-
-    button.style.background = input.value; // 👈 يغير لون الزرار
-    menu.classList.remove("show"); // 👈 يقفل القائمة
-    button.textContent = ""; // يمسح 🎨
-  });
-});
-const textarea = document.querySelector("textarea");
-
-textarea.addEventListener("input", () => {
-  if (textarea.value.length > 0) {
-    textarea.style.textAlign = "left"; // 👈 لما تكتبي
-  } else {
-    textarea.style.textAlign = "center"; // 👈 لو مسحتي
-  }
-  
-});
-
-window.onload = () => {
-  const textarea = document.querySelector("textarea");
-
-  if (performance.navigation.type === 1) {
-    textarea.value = ""; // 👈 يفضي لو refresh
-  }
-};
-
-
-</script>
-
 {{end}}
-
-

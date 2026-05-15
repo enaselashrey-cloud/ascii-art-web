@@ -1,0 +1,42 @@
+{
+    "sourceFile": "templates/index.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1778712120039,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1778712209737,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,28 @@\n {{define \"content\"}}\r\n+<div class=\"generator\">\r\n \r\n+  <form method=\"POST\">\r\n+\r\n+    <!-- Text Area -->\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n+\r\n+    <!-- Options -->\r\n+    <div class=\"options\">\r\n+\r\n+      <select name=\"font\">\r\n+        <option value=\"standard\">Standard</option>\r\n+        <option value=\"shadow\">Shadow</option>\r\n+        <option value=\"thinkertoy\">Thinkertoy</option>\r\n+      </select>\r\n+\r\n+      <input type=\"color\" name=\"color\">\r\n+\r\n+    </div>\r\n+\r\n+    <!-- Button -->\r\n+    <button type=\"submit\">Generate</button>\r\n+\r\n+  </form>\r\n+\r\n+</div>\r\n {{end}}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1778801360836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,7 +22,11 @@\n     <!-- Button -->\r\n     <button type=\"submit\">Generate</button>\r\n \r\n   </form>\r\n+  <!-- output -->\r\n+  <div class=\"output\">\r\n+    <pre>{{.Result}}</pre>\r\n+  </div>\r\n \r\n </div>\r\n {{end}}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1778802460035,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,31 +1,27 @@\n {{define \"content\"}}\r\n-<div class=\"generator\">\r\n+<div class=\"main-box\">\r\n \r\n-  <form method=\"POST\">\r\n-\r\n-    <!-- Text Area -->\r\n+  <!-- input box -->\r\n+  <div class=\"input-box\">\r\n     <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n+  </div>\r\n \r\n-    <!-- Options -->\r\n-    <div class=\"options\">\r\n+  <!-- options -->\r\n+  <div class=\"options\">\r\n+    <select name=\"font\">\r\n+      <option value=\"standard\">Standard</option>\r\n+      <option value=\"shadow\">Shadow</option>\r\n+    </select>\r\n \r\n-      <select name=\"font\">\r\n-        <option value=\"standard\">Standard</option>\r\n-        <option value=\"shadow\">Shadow</option>\r\n-        <option value=\"thinkertoy\">Thinkertoy</option>\r\n-      </select>\r\n+    <input type=\"color\" name=\"color\">\r\n+  </div>\r\n \r\n-      <input type=\"color\" name=\"color\">\r\n+  <!-- button -->\r\n+  <button type=\"submit\">Generate</button>\r\n \r\n-    </div>\r\n-\r\n-    <!-- Button -->\r\n-    <button type=\"submit\">Generate</button>\r\n-\r\n-  </form>\r\n   <!-- output -->\r\n-  <div class=\"output\">\r\n+  <div class=\"output-box\">\r\n     <pre>{{.Result}}</pre>\r\n   </div>\r\n \r\n </div>\r\n"
+                },
+                {
+                    "date": 1778805970381,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,16 +7,26 @@\n   </div>\r\n \r\n   <!-- options -->\r\n   <div class=\"options\">\r\n+\r\n+  <!-- FONT -->\r\n+  <div class=\"custom-select\">\r\n+    <label>Font</label>\r\n     <select name=\"font\">\r\n       <option value=\"standard\">Standard</option>\r\n       <option value=\"shadow\">Shadow</option>\r\n+      <option value=\"thinkertoy\">Thinkertoy</option>\r\n     </select>\r\n+  </div>\r\n \r\n+  <!-- COLOR -->\r\n+  <div class=\"custom-select\">\r\n+    <label>Color</label>\r\n     <input type=\"color\" name=\"color\">\r\n   </div>\r\n \r\n+</div>\r\n   <!-- button -->\r\n   <button type=\"submit\">Generate</button>\r\n \r\n   <!-- output -->\r\n"
+                },
+                {
+                    "date": 1778806462265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,23 +6,23 @@\n     <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n-  <div class=\"options\">\r\n+ <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n-  <div class=\"custom-select\">\r\n-    <label>Font</label>\r\n+  <div class=\"select-box\">\r\n+    <span>Font:</span>\r\n     <select name=\"font\">\r\n-      <option value=\"standard\">Standard</option>\r\n-      <option value=\"shadow\">Shadow</option>\r\n-      <option value=\"thinkertoy\">Thinkertoy</option>\r\n+      <option>Standard</option>\r\n+      <option>Shadow</option>\r\n+      <option>Thinkertoy</option>\r\n     </select>\r\n   </div>\r\n \r\n   <!-- COLOR -->\r\n-  <div class=\"custom-select\">\r\n-    <label>Color</label>\r\n+  <div class=\"color-box\">\r\n+    <span>Color:</span>\r\n     <input type=\"color\" name=\"color\">\r\n   </div>\r\n \r\n </div>\r\n"
+                },
+                {
+                    "date": 1778807185231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n     <span>Font:</span>\r\n     <select name=\"font\">\r\n+      \r\n       <option>Standard</option>\r\n       <option>Shadow</option>\r\n       <option>Thinkertoy</option>\r\n     </select>\r\n"
+                }
+            ],
+            "date": 1778712120039,
+            "name": "Commit-0",
+            "content": "{{define \"content\"}}\r\n\r\n{{end}}"
+        }
+    ]
+}
