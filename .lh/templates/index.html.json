@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 6,
+            "activePatchIndex": 11,
             "patches": [
                 {
                     "date": 1778712120039,
@@ -32,6 +32,26 @@
                 {
                     "date": 1778807185231,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,9 @@\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n     <span>Font:</span>\r\n     <select name=\"font\">\r\n+      \r\n       <option>Standard</option>\r\n       <option>Shadow</option>\r\n       <option>Thinkertoy</option>\r\n     </select>\r\n"
+                },
+                {
+                    "date": 1778867318419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,16 +10,15 @@\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n-    <span>Font:</span>\r\n-    <select name=\"font\">\r\n-      \r\n-      <option>Standard</option>\r\n-      <option>Shadow</option>\r\n-      <option>Thinkertoy</option>\r\n-    </select>\r\n-  </div>\r\n+  <span class=\"label\">Font</span>\r\n+  <select name=\"font\">\r\n+    <option value=\"standard\">Standard</option>\r\n+    <option value=\"shadow\">Shadow</option>\r\n+    <option value=\"thinkertoy\">Thinkertoy</option>\r\n+  </select>\r\n+</div>\r\n \r\n   <!-- COLOR -->\r\n   <div class=\"color-box\">\r\n     <span>Color:</span>\r\n"
+                },
+                {
+                    "date": 1778867590457,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,15 +10,15 @@\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n-  <span class=\"label\">Font</span>\r\n-  <select name=\"font\">\r\n-    <option value=\"standard\">Standard</option>\r\n-    <option value=\"shadow\">Shadow</option>\r\n-    <option value=\"thinkertoy\">Thinkertoy</option>\r\n-  </select>\r\n-</div>\r\n+    <span>Font:</span>\r\n+    <select name=\"font\">\r\n+      <option>Standard</option>\r\n+      <option>Shadow</option>\r\n+      <option>Thinkertoy</option>\r\n+    </select>\r\n+  </div>\r\n \r\n   <!-- COLOR -->\r\n   <div class=\"color-box\">\r\n     <span>Color:</span>\r\n"
+                },
+                {
+                    "date": 1778867683111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,15 +10,15 @@\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n-    <span>Font:</span>\r\n-    <select name=\"font\">\r\n-      <option>Standard</option>\r\n-      <option>Shadow</option>\r\n-      <option>Thinkertoy</option>\r\n-    </select>\r\n-  </div>\r\n+  <select name=\"font\" required>\r\n+    <option value=\"\" selected disabled hidden>Font</option>\r\n+    <option value=\"standard\">Standard</option>\r\n+    <option value=\"shadow\">Shadow</option>\r\n+    <option value=\"thinkertoy\">Thinkertoy</option>\r\n+  </select>\r\n+</div>\r\n \r\n   <!-- COLOR -->\r\n   <div class=\"color-box\">\r\n     <span>Color:</span>\r\n"
+                },
+                {
+                    "date": 1778869773512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,12 +19,12 @@\n   </select>\r\n </div>\r\n \r\n   <!-- COLOR -->\r\n-  <div class=\"color-box\">\r\n-    <span>Color:</span>\r\n-    <input type=\"color\" name=\"color\">\r\n-  </div>\r\n+ <div class=\"color-box\">\r\n+  <span class=\"color-label\">Color</span>\r\n+  <input type=\"color\" name=\"color\">\r\n+</div>\r\n \r\n </div>\r\n   <!-- button -->\r\n   <button type=\"submit\">Generate</button>\r\n"
+                },
+                {
+                    "date": 1778877786063,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,11 +18,10 @@\n     <option value=\"thinkertoy\">Thinkertoy</option>\r\n   </select>\r\n </div>\r\n \r\n-  <!-- COLOR -->\r\n  <div class=\"color-box\">\r\n-  <span class=\"color-label\">Color</span>\r\n+  <span>Color</span>\r\n   <input type=\"color\" name=\"color\">\r\n </div>\r\n \r\n </div>\r\n"
                 }
             ],
             "date": 1778712120039,

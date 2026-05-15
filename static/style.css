@@ -135,72 +135,116 @@ textarea {
   gap: 20px;
 }
 
-.select-box {
+:root {
+  --main-color: rgb(233, 139, 86);
+  --glass-bg: rgba(14, 45, 74, 0.4);
+}
+.select-box,
+.color-box {
+  width: 120px;
+  height: 36px;
+
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 8px; /* 👈 عشان اللون يبعد شوية عن الكلمة */
 
-  padding: 8px 14px;
-  border-radius: 12px;
+  border-radius: 10px;
 
-  background: rgba(14, 45, 74, 0.9);
-  color: rgb(233, 139, 86);
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
 
-  border: 1px solid rgba(255,255,255,0.1);
-
-  position: relative;
+  cursor: pointer;
 }
+
+
 
 .select-box select {
-  border: none;
-  background: transparent;
-  color: rgb(233, 139, 86);
-  font-size: 14px;
+  all: unset;              /* 🔥 يشيل كل حاجة */
+
+  width: 100%;
+  text-align: center;
+
   cursor: pointer;
 
-  appearance: none; /* 👈 مهم */
-  -webkit-appearance: none;
+  color: rgba(213, 194, 182, 0.6);
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
 }
-.select-box::after {
-  content: "⌄";
-  font-size: 12px;
-  color: rgb(233, 139, 86);
+select {
+  background: transparent;
+  border: none;
+}
+.select-box select:valid {
+  color: var(--main-color);
+}
+.select-box select::selection {
+  background: transparent;
+}
+select option {
+  background: #0e2d4a;   /* كحلي */
+  color: var(--main-color);
+}
+.select-box:hover {
+  background: rgba(14, 45, 74, 0.7);
 
-  position: absolute;
-  right: 10px;
-  pointer-events: none;
+  border: 1px solid rgba(233, 139, 86, 0.4);
+
+  box-shadow:
+    0 0 6px rgba(233, 139, 86, 0.3);
+}
+.select-box:focus-within {
+  border: 1px solid rgba(233, 139, 86, 0.7);
+
+  box-shadow:
+    0 0 10px rgba(233, 139, 86, 0.4);
+}
+.select-box select:focus,
+.select-box select:hover {
+  outline: none !important;
+  box-shadow: none !important;
 }
 /* الزرار نفسه */
+
 .color-box {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
 
-  padding: 8px 14px;
-  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
 
-  background: rgba(14, 45, 74, 0.9);
-  color: rgb(233, 139, 86);
-
-  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(213, 194, 182, 0.6);
+  
 }
 .color-box input[type="color"] {
-  width: 28px;
-  height: 28px;
+  width: 18px;
+  height: 18px;
+
   border: none;
+  padding: 0;
+
   background: none;
   cursor: pointer;
 }
-.select-box:hover,
+.color-box span {
+  color: rgba(213, 194, 182, 0.6);
+}
+
 .color-box:hover {
-  transform: translateY(-2px);
+  background: rgba(14, 45, 74, 0.7);
+
+  border: 1px solid rgba(233, 139, 86, 0.4);
 
   box-shadow:
-    0 5px 15px rgba(0,0,0,0.4),
-    0 0 8px rgba(233, 139, 86, 0.4);
-
-  border: 1px solid rgba(233, 139, 86, 0.6);
+    0 0 6px rgba(233, 139, 86, 0.3);
 }
+
+.color-box:hover span {
+  color: var(--main-color);
+}
+
 
 
 
