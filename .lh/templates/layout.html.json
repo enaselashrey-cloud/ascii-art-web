@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 8,
             "patches": [
                 {
                     "date": 1778711488322,
@@ -28,6 +28,18 @@
                 {
                     "date": 1778712767043,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,13 +25,10 @@\n       <a href=\"/contact\" class=\"nav-item\">Contact</a>\r\n     </div>\r\n   </div>\r\n \r\n-  <!-- هنا محتوى الصفحة -->\r\n-  {{template \"content\" .}}\r\n+ <div class=\"main-layout\">\r\n \r\n-  <div class=\"main-layout\">\r\n-\r\n   <!-- الشمال: المحتوى (الفورم) -->\r\n   <div class=\"content\">\r\n     {{template \"content\" .}}\r\n   </div>\r\n"
+                },
+                {
+                    "date": 1778878785195,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,24 +33,10 @@\n     {{template \"content\" .}}\r\n   </div>\r\n \r\n   <!-- اليمين: الصورة + السلوچان -->\r\n-  <div class=\"puzzle\">\r\n+  \r\n \r\n-    <div class=\"text\">\r\n-      <h5>\r\n-        LIFE <br>\r\n-        IS <br>\r\n-        PUZZLE\r\n-      </h5>\r\n-\r\n-      <h1>We solve it..!</h1>\r\n-    </div>\r\n-\r\n-    <img src=\"/static/image.png\" class=\"puzzle-img\">\r\n-\r\n-  </div>\r\n-\r\n </div>\r\n \r\n   <!-- Footer -->\r\n   <div class=\"footer\">\r\n"
+                },
+                {
+                    "date": 1778878908181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,10 +33,24 @@\n     {{template \"content\" .}}\r\n   </div>\r\n \r\n   <!-- اليمين: الصورة + السلوچان -->\r\n-  \r\n+  <div class=\"puzzle\">\r\n \r\n+    <div class=\"text\">\r\n+      <h5>\r\n+        LIFE <br>\r\n+        IS <br>\r\n+        PUZZLE\r\n+      </h5>\r\n+\r\n+      <h1>We solve it..!</h1>\r\n+    </div>\r\n+\r\n+    <img src=\"/static/image.png\" class=\"puzzle-img\">\r\n+\r\n+  </div>\r\n+\r\n </div>\r\n \r\n   <!-- Footer -->\r\n   <div class=\"footer\">\r\n"
+                },
+                {
+                    "date": 1778944833877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n   <title>ASCII Art</title>\r\n     <link href=\"https://fonts.googleapis.com/css2?family=Krona+One&display=swap\" rel=\"stylesheet\">\r\n \r\n   <link rel=\"stylesheet\" href=\"/static/style.css\">\r\n+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n \r\n \r\n </head>\r\n \r\n"
                 }
             ],
             "date": 1778711488322,

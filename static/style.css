@@ -2,10 +2,10 @@ body {
   margin: 0;
   font-family: Arial;
   background-color: rgba(3, 21, 38, 1);
-  color: white;
+ 
 
-  height: 100vh;        /* ارتفاع الشاشة */
-    overflow: hidden;
+  height: auto;        /* ارتفاع الشاشة */
+    overflow: auto;
 }
 
 /* Navbar */
@@ -49,6 +49,7 @@ font-family: 'Poppins', sans-serif;
 }
 
 .main-layout {
+  border: 2px solid red;
   position: relative;
   display: flex;
   height: calc(100vh - 80px);
@@ -64,11 +65,13 @@ font-family: 'Poppins', sans-serif;
   left: 50px;   /* يمين/شمال */
 
   width: 60%;
+   border: 2px solid blue;
 }
 
 
 
 .main-box {
+   border: 2px solid yellow;
   width: 80%;
   padding: 25px;
   border-radius: 20px;
@@ -330,29 +333,30 @@ input[type="color"]:hover {
 
 .puzzle {
   position: absolute;
+  right: 12px;
+  top: 400px;
 
-  bottom: 450px;  /* تحت */
-  right: 12px;   /* يمين */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
 
-  width: 300px;
+  outline: 2px solid red;
 }
 
-/* الصورة */
+
+
 .puzzle-img {
-  position: absolute;
-
-  top: 175px;
-  right: 25px;
-
   width: 200px;
   opacity: 0.5;
+  outline: 2px solid green;
 }
-
 .text {
-  position: absolute;
-  top: 155px;
-  right: 75px;
   color: orange;
+    transform: translateY(20px);
+
+
+  outline: 2px solid blue;
 }
 
 .text h1 {
@@ -366,4 +370,77 @@ input[type="color"]:hover {
   margin-top: 10px;
     color: rgba(213, 194, 182, 100);
 
+}
+
+/* * {
+  border: 1px solid red;
+} */
+
+@media (max-width: 768px) {
+
+  .main-layout {
+    flex-direction: column;   /* بدل row */
+    align-items: center;
+    padding: 100px 20px 20px;
+    height: auto; /* عشان يطول حسب المحتوى */
+  }
+
+  .content {
+    position: static;   /* 👈 أهم حاجة */
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-box {
+    width: 100%;
+  }
+
+  .options {
+    flex-direction: column; /* يبقوا تحت بعض */
+    gap: 10px;
+  }
+
+  .select-box,
+  .color-box {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  /* البازل */
+  .puzzle {
+    position: static;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .puzzle-img {
+    position: static;
+    width: 150px;
+  }
+
+  .text {
+    position: static;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  .content {
+    width: 60%;
+  }
+
+  .puzzle {
+    width: 40%;
+  }
+
+  .puzzle-img {
+    width: 180px;
+  }
 }
