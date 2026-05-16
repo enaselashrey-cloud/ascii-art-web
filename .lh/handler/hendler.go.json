@@ -1,0 +1,38 @@
+{
+    "sourceFile": "handler/hendler.go",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1778956960642,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1778957079871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,10 @@\n \n \trenderTemplate(w, \"index.html\", PageData{\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n+\t\tColor:  color,   // 👈 مهم\n+    Font:   font,    // 👈 مهم\n \t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n"
+                },
+                {
+                    "date": 1778957133057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,10 +72,9 @@\n \n \trenderTemplate(w, \"index.html\", PageData{\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n-\t\tColor:  color,   // 👈 مهم\n-    Font:   font,    // 👈 مهم\n+\t\t\n \t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n"
+                },
+                {
+                    "date": 1778957142102,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,8 @@\n \n \trenderTemplate(w, \"index.html\", PageData{\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n-\t\t\n \t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n"
+                },
+                {
+                    "date": 1778957152034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,10 +8,9 @@\n \n type PageData struct {\n \tResult template.HTML\n \tText   string\n-\tColor  string   // 👈 أضيفي دي\n-    Font   string   // 👈 ودي كمان عشان الفونت\n+\t\n }\n \n func renderTemplate(\n \tw http.ResponseWriter,\n"
+                },
+                {
+                    "date": 1778957218786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n \n type PageData struct {\n \tResult template.HTML\n \tText   string\n-\t\n }\n \n func renderTemplate(\n \tw http.ResponseWriter,\n"
+                }
+            ],
+            "date": 1778956960642,
+            "name": "Commit-0",
+            "content": "package handler\n\nimport (\n\t\"ascii-art/ascii\"\n\t\"html/template\"\n\t\"net/http\"\n)\n\ntype PageData struct {\n\tResult template.HTML\n\tText   string\n\tColor  string   // 👈 أضيفي دي\n    Font   string   // 👈 ودي كمان عشان الفونت\n}\n\nfunc renderTemplate(\n\tw http.ResponseWriter,\n\tpage string,\n\tdata interface{},\n) {\n\n\ttmpl := template.Must(template.ParseFiles(\n\t\t\"templates/layout.html\",\n\t\t\"templates/\"+page,\n\t))\n\n\terr := tmpl.ExecuteTemplate(w, \"layout\", data)\n\n\tif err != nil {\n\t\thttp.Error(w, \"Template Error\", http.StatusInternalServerError)\n\t}\n}\n\nfunc HomeHandler(w http.ResponseWriter, r *http.Request) {\n\tif r.URL.Path != \"/\" {\n\t\thttp.NotFound(w, r)\n\t\treturn\n\t}\n\n\ttext := r.FormValue(\"text\")\n\tfont := r.FormValue(\"font\")\n\tcolor := r.FormValue(\"color\")\n\n\tif text == \"\" {\n\t\trenderTemplate(w, \"index.html\", nil)\n\t\treturn\n\t}\n\n\tif font == \"\" {\n\t\tfont = \"standard\"\n\t}\n\n\tbanner, err := ascii.LoadBanner(font)\n\tif err != nil {\n\t\thttp.Error(w, \"Font not found\", http.StatusNotFound)\n\t\treturn\n\t}\n\n\tresult, err := ascii.RenderAscii(text, banner)\n\tif err != nil {\n\t\tw.WriteHeader(http.StatusBadRequest)\n\t\trenderTemplate(w, \"index.html\", PageData{\n\t\t\tResult: template.HTML(\"Invalid input\"),\n\t\t\tText:   text,\n\t\t})\n\t\treturn\n\t}\n\n\tif color != \"\" {\n\t\tresult = \"<span style='color:\" + color + \"'>\" + result + \"</span>\"\n\t}\n\n\trenderTemplate(w, \"index.html\", PageData{\n\t\tResult: template.HTML(result),\n\t\tText:   text,\n\t})\n}\n\nfunc AboutHandler(w http.ResponseWriter, r *http.Request) {\n\trenderTemplate(w, \"about.html\", nil)\n}\n"
+        }
+    ]
+}

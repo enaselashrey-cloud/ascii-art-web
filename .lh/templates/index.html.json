@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 38,
             "patches": [
                 {
                     "date": 1778712120039,
@@ -52,6 +52,114 @@
                 {
                     "date": 1778877786063,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,11 +18,10 @@\n     <option value=\"thinkertoy\">Thinkertoy</option>\r\n   </select>\r\n </div>\r\n \r\n-  <!-- COLOR -->\r\n  <div class=\"color-box\">\r\n-  <span class=\"color-label\">Color</span>\r\n+  <span>Color</span>\r\n   <input type=\"color\" name=\"color\">\r\n </div>\r\n \r\n </div>\r\n"
+                },
+                {
+                    "date": 1778956033677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n {{define \"content\"}}\r\n <div class=\"main-box\">\r\n+  \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n     <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n"
+                },
+                {
+                    "date": 1778956055828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n {{define \"content\"}}\r\n <div class=\"main-box\">\r\n   \r\n+  \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n     <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n"
+                },
+                {
+                    "date": 1778956061872,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n {{define \"content\"}}\r\n+for\r\n <div class=\"main-box\">\r\n+\r\n   \r\n-  \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n     <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n"
+                },
+                {
+                    "date": 1778956067238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {{define \"content\"}}\r\n-for\r\n+<form action=\"\"></form>\r\n <div class=\"main-box\">\r\n \r\n   \r\n \r\n"
+                },
+                {
+                    "date": 1778956076864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {{define \"content\"}}\r\n-<form action=\"\"></form>\r\n+<form met=\"post\"></form>\r\n <div class=\"main-box\">\r\n \r\n   \r\n \r\n"
+                },
+                {
+                    "date": 1778956082932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {{define \"content\"}}\r\n-<form met=\"post\"></form>\r\n+<form method=\"post\">\r\n <div class=\"main-box\">\r\n \r\n   \r\n \r\n"
+                },
+                {
+                    "date": 1778956809665,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\">\r\n+ <input type=\"color\" name=\"color\" value=\"{{.Color}}\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n@@ -36,5 +36,6 @@\n     <pre>{{.Result}}</pre>\r\n   </div>\r\n \r\n </div>\r\n+</form>\r\n {{end}}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1778956885857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n- <input type=\"color\" name=\"color\" value=\"{{.Color}}\">\r\n+  <input type=\"color\" name=\"color\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1778956937978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\">\r\n+ <input type=\"color\" name=\"color\" value=\"{{.Color}}\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1778957226175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n- <input type=\"color\" name=\"color\" value=\"{{.Color}}\">\r\n+  <input type=\"color\" name=\"color\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1778957313895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n-  <select name=\"font\" required>\r\n+  <select name=\"font\">\r\n     <option value=\"\" selected disabled hidden>Font</option>\r\n     <option value=\"standard\">Standard</option>\r\n     <option value=\"shadow\">Shadow</option>\r\n     <option value=\"thinkertoy\">Thinkertoy</option>\r\n"
+                },
+                {
+                    "date": 1778957492966,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n   <button type=\"submit\">Generate</button>\r\n \r\n   <!-- output -->\r\n   <div class=\"output-box\">\r\n-    <pre>{{.Result}}</pre>\r\n+   \r\n   </div>\r\n \r\n </div>\r\n </form>\r\n"
+                },
+                {
+                    "date": 1778957508717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n   <button type=\"submit\">Generate</button>\r\n \r\n   <!-- output -->\r\n   <div class=\"output-box\">\r\n-   \r\n+    <pre>{{.Result}}</pre>\r\n   </div>\r\n \r\n </div>\r\n </form>\r\n"
+                },
+                {
+                    "date": 1778957532881,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"req></textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957546221,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"req></textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"required>.t</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957553733,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"required>.t</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"required>.te</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957562349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"required>.te</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"required></textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957570493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"required></textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"required>{{.text</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957600377,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"required>{{.text</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957611042,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"required>{{.text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957622200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {{define \"content\"}}\r\n-<form method=\"post\">\r\n+<form method=\"post\" >\r\n <div class=\"main-box\">\r\n \r\n   \r\n \r\n"
+                },
+                {
+                    "date": 1778957645313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n {{define \"content\"}}\r\n-<form method=\"post\" >\r\n+<form method=\"post\">\r\n <div class=\"main-box\">\r\n \r\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"required>{{.text}}</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957723385,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957728842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957899288,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.text}}</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778957919268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\"></textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778958042303,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.text}}</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
                 }
             ],
             "date": 1778712120039,

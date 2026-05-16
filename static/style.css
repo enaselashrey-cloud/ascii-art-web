@@ -4,8 +4,10 @@ body {
   background-color: rgba(3, 21, 38, 1);
  
 
-  height: auto;        /* ارتفاع الشاشة */
+   height: 100vh;        /* ارتفاع الشاشة */
     overflow: auto;
+    display: flex;
+  flex-direction: column;
 }
 
 /* Navbar */
@@ -49,13 +51,17 @@ font-family: 'Poppins', sans-serif;
 }
 
 .main-layout {
-  border: 2px solid red;
-  position: relative;
-  display: flex;
+  
+ 
   height: calc(100vh - 80px);
 
+ flex: 1; /* 👈 دي السحر */
+  
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 20px 40px; /* قللناها */
+   padding: 10px 30px;
+  
 }
 
 .content {
@@ -65,7 +71,7 @@ font-family: 'Poppins', sans-serif;
   left: 50px;   /* يمين/شمال */
 
   width: 60%;
-   border: 2px solid blue;
+   /* border: 2px solid blue; */
 }
 
 
@@ -89,6 +95,7 @@ box-shadow:
   display: flex;
   flex-direction: column;
   gap: 15px;
+  
 }
 .input-box {
   background: rgb(14 33 56);
@@ -158,6 +165,7 @@ textarea {
   backdrop-filter: blur(10px);
 
   cursor: pointer;
+  
 }
 
 
@@ -180,7 +188,7 @@ select {
   border: none;
 }
 .select-box select:valid {
-  color: var(--main-color);
+  color: rgba(213, 194, 182, 0.6);
 }
 .select-box select::selection {
   background: transparent;
@@ -205,10 +213,14 @@ select option {
 }
 .select-box select:focus,
 .select-box select:hover {
-  outline: none !important;
-  box-shadow: none !important;
+  color: var(--main-color);
 }
-/* الزرار نفسه */
+
+
+.color-box:hover span {
+  color: var(--main-color);
+}
+
 
 .color-box {
   display: flex;
@@ -325,9 +337,30 @@ input[type="color"]:hover {
 
 /* Footer */
 .footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #02101f;
+  position: absolute;
+  bottom: 10px;          /* 👈 نازل شوية من تحت */
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 95%;            /* أصغر شوية من النافبار */
+  padding: 8px 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(2, 16, 31, 0.6);
+  backdrop-filter: blur(10px);
+
+  border-radius: 15px;
+
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+   opacity: 0.9;
+   color: rgba(233, 139, 86, 0.5);
+
+  font-family: 'Poppins', sans-serif;
+  
 }
 
 
@@ -341,7 +374,7 @@ input[type="color"]:hover {
   align-items: center;
   gap: 0px;
 
-  outline: 2px solid red;
+ 
 }
 
 
@@ -349,14 +382,14 @@ input[type="color"]:hover {
 .puzzle-img {
   width: 200px;
   opacity: 0.5;
-  outline: 2px solid green;
+  
 }
 .text {
   color: orange;
     transform: translateY(20px);
 
 
-  outline: 2px solid blue;
+  
 }
 
 .text h1 {

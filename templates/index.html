@@ -1,9 +1,12 @@
 {{define "content"}}
+<form method="post">
 <div class="main-box">
+
+  
 
   <!-- input box -->
   <div class="input-box">
-    <textarea name="text" placeholder="Enter your text..."></textarea>
+    <textarea name="text" placeholder="Enter your text...">{{.Text}}</textarea>
   </div>
 
   <!-- options -->
@@ -11,7 +14,7 @@
 
   <!-- FONT -->
   <div class="select-box">
-  <select name="font" required>
+  <select name="font">
     <option value="" selected disabled hidden>Font</option>
     <option value="standard">Standard</option>
     <option value="shadow">Shadow</option>
@@ -34,4 +37,5 @@
   </div>
 
 </div>
+</form>
 {{end}}
