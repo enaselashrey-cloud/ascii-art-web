@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 38,
+            "activePatchIndex": 54,
             "patches": [
                 {
                     "date": 1778712120039,
@@ -160,6 +160,70 @@
                 {
                     "date": 1778958042303,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.text}}</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778998840888,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,14 +13,17 @@\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n-  <select name=\"font\">\r\n-    <option value=\"\" selected disabled hidden>Font</option>\r\n-    <option value=\"standard\">Standard</option>\r\n-    <option value=\"shadow\">Shadow</option>\r\n-    <option value=\"thinkertoy\">Thinkertoy</option>\r\n-  </select>\r\n+ <select name=\"font\">\r\n+  <option value=\"\" disabled hidden {{if not .Font}}selected{{end}}>Font</option>\r\n+\r\n+  <option value=\"standard\" {{if eq .Font \"standard\"}}selected{{end}}>Standard</option>\r\n+\r\n+  <option value=\"shadow\" {{if eq .Font \"shadow\"}}selected{{end}}>Shadow</option>\r\n+\r\n+  <option value=\"thinkertoy\" {{if eq .Font \"thinkertoy\"}}selected{{end}}>Thinkertoy</option>\r\n+</select>\r\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n"
+                },
+                {
+                    "date": 1778999067746,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n {{define \"content\"}}\r\n-<form method=\"post\">\r\n+<form method=\"post\" autocomplete=\"off\">\r\n <div class=\"main-box\">\r\n \r\n   \r\n \r\n"
+                },
+                {
+                    "date": 1778999184285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n- <select name=\"font\">\r\n+ <select name=\"font\" au>\r\n   <option value=\"\" disabled hidden {{if not .Font}}selected{{end}}>Font</option>\r\n \r\n   <option value=\"standard\" {{if eq .Font \"standard\"}}selected{{end}}>Standard</option>\r\n \r\n"
+                },
+                {
+                    "date": 1778999194425,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,17 +5,17 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n+    <textarea name=\"text\"a placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n- <select name=\"font\" au>\r\n+ <select name=\"font\" autocomplete=\"off\">\r\n   <option value=\"\" disabled hidden {{if not .Font}}selected{{end}}>Font</option>\r\n \r\n   <option value=\"standard\" {{if eq .Font \"standard\"}}selected{{end}}>Standard</option>\r\n \r\n"
+                },
+                {
+                    "date": 1778999202000,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\"a placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n+    <textarea name=\"text\"autocomplete placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778999208543,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\"autocomplete placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n+    <textarea name=\"text\"autocomplete=\"\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n"
+                },
+                {
+                    "date": 1778999227333,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\"autocomplete=\"\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n+    <textarea name=\"text\"autocomplete=\"off\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n@@ -26,9 +26,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\">\r\n+  <input type=\"color\" name=\"color\" au>\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1778999257210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\" au>\r\n+  <input type=\"color\" name=\"color\" autocomplete=\"o\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1778999263516,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\" autocomplete=\"o\">\r\n+  <input type=\"color\" name=\"color\" autocomplete=\"off\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1779000079247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,34 +1,31 @@\n {{define \"content\"}}\r\n-<form method=\"post\" autocomplete=\"off\">\r\n+<form method=\"post\">\r\n <div class=\"main-box\">\r\n \r\n   \r\n \r\n   <!-- input box -->\r\n   <div class=\"input-box\">\r\n-    <textarea name=\"text\"autocomplete=\"off\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n+    <textarea name=\"text\" placeholder=\"Enter your text...\">{{.Text}}</textarea>\r\n   </div>\r\n \r\n   <!-- options -->\r\n  <div class=\"options\">\r\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n- <select name=\"font\" autocomplete=\"off\">\r\n-  <option value=\"\" disabled hidden {{if not .Font}}selected{{end}}>Font</option>\r\n-\r\n-  <option value=\"standard\" {{if eq .Font \"standard\"}}selected{{end}}>Standard</option>\r\n-\r\n-  <option value=\"shadow\" {{if eq .Font \"shadow\"}}selected{{end}}>Shadow</option>\r\n-\r\n-  <option value=\"thinkertoy\" {{if eq .Font \"thinkertoy\"}}selected{{end}}>Thinkertoy</option>\r\n-</select>\r\n+  <select name=\"font\">\r\n+    <option value=\"\" selected disabled hidden>Font</option>\r\n+    <option value=\"standard\">Standard</option>\r\n+    <option value=\"shadow\">Shadow</option>\r\n+    <option value=\"thinkertoy\">Thinkertoy</option>\r\n+  </select>\r\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\" autocomplete=\"off\">\r\n+  <input type=\"color\" name=\"color\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1779000681191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,13 +14,14 @@\n \r\n   <!-- FONT -->\r\n   <div class=\"select-box\">\r\n   <select name=\"font\">\r\n-    <option value=\"\" selected disabled hidden>Font</option>\r\n-    <option value=\"standard\">Standard</option>\r\n-    <option value=\"shadow\">Shadow</option>\r\n-    <option value=\"thinkertoy\">Thinkertoy</option>\r\n-  </select>\r\n+  <option value=\"\" disabled hidden {{if not .Font}}selected{{end}}>Font</option>\r\n+\r\n+  <option value=\"standard\" {{if eq .Font \"standard\"}}selected{{end}}>Standard</option>\r\n+  <option value=\"shadow\" {{if eq .Font \"shadow\"}}selected{{end}}>Shadow</option>\r\n+  <option value=\"thinkertoy\" {{if eq .Font \"thinkertoy\"}}selected{{end}}>Thinkertoy</option>\r\n+</select>\r\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n"
+                },
+                {
+                    "date": 1779000715760,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\">\r\n+  <input type=\"color\" name=\"color\" value>\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1779000721969,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\" value>\r\n+  <input type=\"color\" name=\"color\" value=\".c\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1779000727191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\" value=\".c\">\r\n+  <input type=\"color\" name=\"color\" value=\".color}}\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1779000733718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\" value=\".color}}\">\r\n+  <input type=\"color\" name=\"color\" value=\"{{}.color}}\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
+                },
+                {
+                    "date": 1779000903831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n </div>\r\n \r\n  <div class=\"color-box\">\r\n   <span>Color</span>\r\n-  <input type=\"color\" name=\"color\" value=\"{{}.color}}\">\r\n+  <input type=\"color\" name=\"color\" value=\"{{.Color}}\">\r\n </div>\r\n \r\n </div>\r\n   <!-- button -->\r\n"
                 }
             ],
             "date": 1778712120039,

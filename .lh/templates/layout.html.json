@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 13,
             "patches": [
                 {
                     "date": 1778711488322,
@@ -40,6 +40,26 @@
                 {
                     "date": 1778944833877,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n   <title>ASCII Art</title>\r\n     <link href=\"https://fonts.googleapis.com/css2?family=Krona+One&display=swap\" rel=\"stylesheet\">\r\n \r\n   <link rel=\"stylesheet\" href=\"/static/style.css\">\r\n+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n \r\n \r\n </head>\r\n \r\n"
+                },
+                {
+                    "date": 1779000362499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,13 @@\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n \r\n \r\n </head>\r\n-\r\n+<script>\r\n+if (window.history.replaceState) {\r\n+  window.history.replaceState(null, null, window.location.href);\r\n+}\r\n+</script>\r\n <body>\r\n \r\n   <!-- Navbar -->\r\n   <div class=\"navbar\">\r\n"
+                },
+                {
+                    "date": 1779000392254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,13 +10,9 @@\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n \r\n \r\n </head>\r\n-<script>\r\n-if (window.history.replaceState) {\r\n-  window.history.replaceState(null, null, window.location.href);\r\n-}\r\n-</script>\r\n+\r\n <body>\r\n \r\n   <!-- Navbar -->\r\n   <div class=\"navbar\">\r\n"
+                },
+                {
+                    "date": 1779000779152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,8 +56,12 @@\n   <!-- Footer -->\r\n   <div class=\"footer\">\r\n     <p>© 2026 ASCII Art Project</p>\r\n   </div>\r\n-\r\n+<script>\r\n+if (window.history.replaceState) {\r\n+  window.history.replaceState(null, null, window.location.pathname);\r\n+}\r\n+</script>\r\n </body>\r\n </html>\r\n {{end}}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1779000790813,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,12 +56,8 @@\n   <!-- Footer -->\r\n   <div class=\"footer\">\r\n     <p>© 2026 ASCII Art Project</p>\r\n   </div>\r\n-<script>\r\n-if (window.history.replaceState) {\r\n-  window.history.replaceState(null, null, window.location.pathname);\r\n-}\r\n-</script>\r\n+\r\n </body>\r\n </html>\r\n {{end}}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1779000847444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,8 +56,12 @@\n   <!-- Footer -->\r\n   <div class=\"footer\">\r\n     <p>© 2026 ASCII Art Project</p>\r\n   </div>\r\n-\r\n+<script>\r\n+if (window.history.replaceState) {\r\n+  window.history.replaceState(null, null, window.location.pathname);\r\n+}\r\n+</script>\r\n </body>\r\n </html>\r\n {{end}}\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1778711488322,

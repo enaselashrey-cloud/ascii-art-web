@@ -15,16 +15,17 @@
   <!-- FONT -->
   <div class="select-box">
   <select name="font">
-    <option value="" selected disabled hidden>Font</option>
-    <option value="standard">Standard</option>
-    <option value="shadow">Shadow</option>
-    <option value="thinkertoy">Thinkertoy</option>
-  </select>
+  <option value="" disabled hidden {{if not .Font}}selected{{end}}>Font</option>
+
+  <option value="standard" {{if eq .Font "standard"}}selected{{end}}>Standard</option>
+  <option value="shadow" {{if eq .Font "shadow"}}selected{{end}}>Shadow</option>
+  <option value="thinkertoy" {{if eq .Font "thinkertoy"}}selected{{end}}>Thinkertoy</option>
+</select>
 </div>
 
  <div class="color-box">
   <span>Color</span>
-  <input type="color" name="color">
+  <input type="color" name="color" value="{{.Color}}">
 </div>
 
 </div>

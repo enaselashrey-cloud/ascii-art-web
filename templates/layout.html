@@ -57,7 +57,11 @@
   <div class="footer">
     <p>© 2026 ASCII Art Project</p>
   </div>
-
+<script>
+if (window.history.replaceState) {
+  window.history.replaceState(null, null, window.location.pathname);
+}
+</script>
 </body>
 </html>
 {{end}}

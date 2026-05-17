@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 5,
+            "activePatchIndex": 20,
             "patches": [
                 {
                     "date": 1778956960642,
@@ -28,6 +28,66 @@
                 {
                     "date": 1778957218786,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n \n type PageData struct {\n \tResult template.HTML\n \tText   string\n-\t\n }\n \n func renderTemplate(\n \tw http.ResponseWriter,\n"
+                },
+                {
+                    "date": 1778998764948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n \n type PageData struct {\n \tResult template.HTML\n \tText   string\n+\t Font   string\n }\n \n func renderTemplate(\n \tw http.ResponseWriter,\n"
+                },
+                {
+                    "date": 1778998794110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,8 +71,9 @@\n \n \trenderTemplate(w, \"index.html\", PageData{\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n+\t\tFont:   font,\n \t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n"
+                },
+                {
+                    "date": 1778998943868,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,12 +39,12 @@\n \ttext := r.FormValue(\"text\")\n \tfont := r.FormValue(\"font\")\n \tcolor := r.FormValue(\"color\")\n \n-\tif text == \"\" {\n-\t\trenderTemplate(w, \"index.html\", nil)\n-\t\treturn\n-\t}\n+\tif r.Method == http.MethodGet {\n+    renderTemplate(w, \"index.html\", PageData{})\n+    return\n+}\n \n \tif font == \"\" {\n \t\tfont = \"standard\"\n \t}\n"
+                },
+                {
+                    "date": 1778999578558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,13 +68,10 @@\n \tif color != \"\" {\n \t\tresult = \"<span style='color:\" + color + \"'>\" + result + \"</span>\"\n \t}\n \n-\trenderTemplate(w, \"index.html\", PageData{\n-\t\tResult: template.HTML(result),\n-\t\tText:   text,\n-\t\tFont:   font,\n-\t})\n+\thttp.Redirect(w, r, \"/\", http.StatusSeeOther)\n+return)\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n \trenderTemplate(w, \"about.html\", nil)\n"
+                },
+                {
+                    "date": 1778999635466,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,10 +68,13 @@\n \tif color != \"\" {\n \t\tresult = \"<span style='color:\" + color + \"'>\" + result + \"</span>\"\n \t}\n \n-\thttp.Redirect(w, r, \"/\", http.StatusSeeOther)\n-return)\n+\trenderTemplate(w, \"index.html\", PageData{\n+\t\tResult: template.HTML(result),\n+\t\tText:   text,\n+\t\tFont:   font,\n+\t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n \trenderTemplate(w, \"about.html\", nil)\n"
+                },
+                {
+                    "date": 1778999657623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,8 +73,10 @@\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n \t\tFont:   font,\n \t})\n+\thttp.Redirect(w, r, \"/\", http.StatusSeeOther)\n+return\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n \trenderTemplate(w, \"about.html\", nil)\n"
+                },
+                {
+                    "date": 1778999689523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,10 +73,9 @@\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n \t\tFont:   font,\n \t})\n-\thttp.Redirect(w, r, \"/\", http.StatusSeeOther)\n-return\n+\t\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n \trenderTemplate(w, \"about.html\", nil)\n"
+                },
+                {
+                    "date": 1778999708714,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,9 +73,10 @@\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n \t\tFont:   font,\n \t})\n-\t\n+\thttp.Redirect(w, r, \"/\", http.StatusSeeOther)\n+return\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n \trenderTemplate(w, \"about.html\", nil)\n"
+                },
+                {
+                    "date": 1778999786302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,15 +68,10 @@\n \tif color != \"\" {\n \t\tresult = \"<span style='color:\" + color + \"'>\" + result + \"</span>\"\n \t}\n \n-\trenderTemplate(w, \"index.html\", PageData{\n-\t\tResult: template.HTML(result),\n-\t\tText:   text,\n-\t\tFont:   font,\n-\t})\n-\thttp.Redirect(w, r, \"/\", http.StatusSeeOther)\n-return\n+\t\n+\thttp.Redirect(w, r, \"/?result=\"+template.URLQueryEscaper(result), http.StatusSeeOther)\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n \trenderTemplate(w, \"about.html\", nil)\n"
+                },
+                {
+                    "date": 1778999812406,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,14 @@\n \tfont := r.FormValue(\"font\")\n \tcolor := r.FormValue(\"color\")\n \n \tif r.Method == http.MethodGet {\n-    renderTemplate(w, \"index.html\", PageData{})\n+\n+    result := r.URL.Query().Get(\"result\")\n+\n+    renderTemplate(w, \"index.html\", PageData{\n+        Result: template.HTML(result),\n+    })\n     return\n }\n \n \tif font == \"\" {\n"
+                },
+                {
+                    "date": 1778999842043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n \n type PageData struct {\n \tResult template.HTML\n \tText   string\n-\t Font   string\n }\n \n func renderTemplate(\n \tw http.ResponseWriter,\n@@ -39,18 +38,13 @@\n \ttext := r.FormValue(\"text\")\n \tfont := r.FormValue(\"font\")\n \tcolor := r.FormValue(\"color\")\n \n-\tif r.Method == http.MethodGet {\n+\tif text == \"\" {\n+\t\trenderTemplate(w, \"index.html\", nil)\n+\t\treturn\n+\t}\n \n-    result := r.URL.Query().Get(\"result\")\n-\n-    renderTemplate(w, \"index.html\", PageData{\n-        Result: template.HTML(result),\n-    })\n-    return\n-}\n-\n \tif font == \"\" {\n \t\tfont = \"standard\"\n \t}\n \n@@ -73,10 +67,12 @@\n \tif color != \"\" {\n \t\tresult = \"<span style='color:\" + color + \"'>\" + result + \"</span>\"\n \t}\n \n-\t\n-\thttp.Redirect(w, r, \"/?result=\"+template.URLQueryEscaper(result), http.StatusSeeOther)\n+\trenderTemplate(w, \"index.html\", PageData{\n+\t\tResult: template.HTML(result),\n+\t\tText:   text,\n+\t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n \trenderTemplate(w, \"about.html\", nil)\n"
+                },
+                {
+                    "date": 1779000642386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,10 @@\n \n type PageData struct {\n \tResult template.HTML\n \tText   string\n+\t Font   string   // 👈 ضيفي دي\n+    Color  string   // 👈 ودي\n }\n \n func renderTemplate(\n \tw http.ResponseWriter,\n"
+                },
+                {
+                    "date": 1779000658898,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,10 @@\n \n \trenderTemplate(w, \"index.html\", PageData{\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n+\t\t  Font:   font,   // 👈 مهم\n+    Color:  color,  // 👈 مهم\n \t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n"
+                },
+                {
+                    "date": 1779000928352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n \tfont := r.FormValue(\"font\")\n \tcolor := r.FormValue(\"color\")\n \n \tif text == \"\" {\n-\t\trenderTemplate(w, \"index.html\", nil)\n+\t\trenderTemplate(w, \"index.html\", )\n \t\treturn\n \t}\n \n \tif font == \"\" {\n"
+                },
+                {
+                    "date": 1779000934336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n \tfont := r.FormValue(\"font\")\n \tcolor := r.FormValue(\"color\")\n \n \tif text == \"\" {\n-\t\trenderTemplate(w, \"index.html\", )\n+\t\trenderTemplate(w, \"index.html\", PageData{})\n \t\treturn\n \t}\n \n \tif font == \"\" {\n"
                 }
             ],
             "date": 1778956960642,
