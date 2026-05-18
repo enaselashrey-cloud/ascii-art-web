@@ -368,9 +368,9 @@ input[type="color"]:hover {
 
 
 .puzzle {
-  position: absolute;
+ 
   right: 12px;
-  top: 400px;
+  top: 374px;
 
   display: flex;
   flex-direction: column;
