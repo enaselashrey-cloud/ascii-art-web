@@ -319,6 +319,10 @@ button:active {
     inset -2px -2px 6px rgba(255,255,255,0.05);
 
   min-height: 120px;
+  max-width: 100%;
+  max-height: 200px;
+
+  overflow: auto; /* scroll */
 }
 select:hover,
 input[type="color"]:hover {
@@ -329,6 +333,7 @@ input[type="color"]:hover {
   margin: 0;
   font-family: monospace;
   white-space: pre;
+  overflow-x: auto;
 }
 /* hover */
 
