@@ -4,7 +4,7 @@ body {
   background-color: rgba(3, 21, 38, 1);
  
 
-   height: 100vh;        /* ارتفاع الشاشة */
+   min-height: 100vh;        /* ارتفاع الشاشة */
     overflow: auto;
     display: flex;
   flex-direction: column;
@@ -53,20 +53,19 @@ font-family: 'Poppins', sans-serif;
 .main-layout {
   
  
-  height: calc(100vh - 80px);
+ 
 
  flex: 1; /* 👈 دي السحر */
   
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-   padding: 10px 30px;
+   padding: 100px 30px 30px; /* top, left/right, bottom */
   
 }
 
 .content {
-  position: absolute;
-
+ 
   top: 100px;   /* نزليه/طلعيه */
   left: 50px;   /* يمين/شمال */
 
@@ -342,10 +341,9 @@ input[type="color"]:hover {
 
 /* Footer */
 .footer {
-  position: absolute;
-  bottom: 10px;          /* 👈 نازل شوية من تحت */
-  left: 50%;
-  transform: translateX(-50%);
+   width: 95%;
+  margin: 0px auto;
+  margin-top: auto;   /* 👈 دي أهم سطر */
 
   width: 95%;            /* أصغر شوية من النافبار */
   padding: 8px 20px;
@@ -473,9 +471,14 @@ input[type="color"]:hover {
   .content {
     width: 60%;
   }
+   .main-layout {
+    padding: 80px 20px 20px; /* 👈 أقل شوية */
+  }
 
   .puzzle {
     width: 40%;
+     position: static; /* 👈 مهم جدًا */
+    margin-top: 30px;
   }
 
   .puzzle-img {
