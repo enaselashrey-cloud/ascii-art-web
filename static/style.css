@@ -216,37 +216,24 @@ select option {
 }
 
 
-.color-box:hover span {
-  color: var(--main-color);
-}
+.color-select-box {
+  width: 120px;
+  height: 36px;
 
-
-.color-box {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  position: relative;
+  border-radius: 10px;
+
+  background: rgba(14, 45, 74, 0.4);
+  backdrop-filter: blur(10px);
+
   cursor: pointer;
-
-  color: rgba(213, 194, 182, 0.6);
-  
+  transition: 0.3s; /* 👈 مهم */
 }
-.color-box input[type="color"] {
-  width: 18px;
-  height: 18px;
-
-  border: none;
-  padding: 0;
-
-  background: none;
-  cursor: pointer;
-}
-.color-box span {
-  color: rgba(213, 194, 182, 0.6);
-}
-
-.color-box:hover {
+/* 🔥 hover */
+.color-select-box:hover {
   background: rgba(14, 45, 74, 0.7);
 
   border: 1px solid rgba(233, 139, 86, 0.4);
@@ -255,8 +242,67 @@ select option {
     0 0 6px rgba(233, 139, 86, 0.3);
 }
 
-.color-box:hover span {
+/* 🔥 focus (لما تضغطي عليه) */
+.color-select-box:focus-within {
+  border: 1px solid rgba(233, 139, 86, 0.7);
+
+  box-shadow:
+    0 0 10px rgba(233, 139, 86, 0.4);
+}
+
+
+
+/* 🔥 focus (لما تضغطي عليه) */
+.color-select-box:focus-within {
+  border: 1px solid rgba(233, 139, 86, 0.7);
+
+ 
+}
+
+.color-select-box select {
+  all: unset;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+
+  color: rgba(213, 194, 182, 0.6);
+}
+
+/* اللون الافتراضي */
+.color-select-box select {
+   all: unset;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+
+  color: rgba(213, 194, 182, 0.6);
+  transition: 0.3s;
+
+  outline: none;        /* 👈 مهم */
+  box-shadow: none;     /* 👈 احتياطي */
+   
+
+  appearance: none;            /* 👈 مهم */
+  -webkit-appearance: none;    /* 👈 مهم */
+  -moz-appearance: none;     
+}
+
+/* 🔥 hover على كلمة Color */
+.color-select-box:hover select {
   color: var(--main-color);
+}
+
+/* 🔥 focus (لما تضغطي عليه) */
+.color-select-box select:focus {
+  color: var(--main-color);
+   outline: none;
+  box-shadow: none;
+}
+
+/* شكل القائمة لما تتفتح */
+select option {
+  background: #0e2d4a;
+  color: rgb(233, 139, 86);
 }
 
 
@@ -323,10 +369,7 @@ button:active {
 
   overflow: auto; /* scroll */
 }
-select:hover,
-input[type="color"]:hover {
-  box-shadow: 0 0 6px rgba(233, 139, 86, 0.4);
-}
+
 
 .output-box pre {
   margin: 0;
@@ -485,3 +528,4 @@ input[type="color"]:hover {
     width: 180px;
   }
 }
+
