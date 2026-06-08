@@ -1,18 +1,30 @@
 package ascii
 
 import (
-	"fmt"
+	"errors"
 	"os"
 	"strings"
+)
+
+var (
+	ErrBannerNotFound       = errors.New("banner not found")
+	ErrInvalidBanner        = errors.New("invalid banner")
+	ErrUnsupportedCharacter = errors.New("unsupported character")
 )
 
 func LoadBanner(font string) ([]string, error) {
 	data, err := os.ReadFile("ascii/fonts/" + font + ".txt")
 	if err != nil {
+		if os.IsNotExist(err) {
+			return nil, ErrBannerNotFound
+		}
 		return nil, err
 	}
 
 	lines := strings.Split(string(data), "\n")
+	if len(lines) < 855 {
+		return nil, ErrInvalidBanner
+	}
 
 	return lines, nil
 }
@@ -32,13 +44,13 @@ func RenderAscii(text string, lines []string) (string, error) {
 			for _, ch := range line {
 
 				if ch < 32 || ch > 126 {
-					return "", fmt.Errorf("unsupported character")
+					return "", ErrUnsupportedCharacter
 				}
 
 				index := (int(ch)-32)*9 + row + 1
 
 				if index >= len(lines) {
-					return "", fmt.Errorf("invalid banner")
+					return "", ErrInvalidBanner
 				}
 
 				output.WriteString(lines[index])

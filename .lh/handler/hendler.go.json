@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 20,
+            "activePatchIndex": 22,
             "patches": [
                 {
                     "date": 1778956960642,
@@ -88,6 +88,14 @@
                 {
                     "date": 1779000934336,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -41,9 +41,9 @@\n \tfont := r.FormValue(\"font\")\n \tcolor := r.FormValue(\"color\")\n \n \tif text == \"\" {\n-\t\trenderTemplate(w, \"index.html\", )\n+\t\trenderTemplate(w, \"index.html\", PageData{})\n \t\treturn\n \t}\n \n \tif font == \"\" {\n"
+                },
+                {
+                    "date": 1780911049476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,10 +8,10 @@\n \n type PageData struct {\n \tResult template.HTML\n \tText   string\n-\t Font   string   // 👈 ضيفي دي\n-    Color  string   // 👈 ودي\n+\tFont   string // 👈 ضيفي دي\n+\tColor  string // 👈 ودي\n }\n \n func renderTemplate(\n \tw http.ResponseWriter,\n@@ -50,12 +50,9 @@\n \t\tfont = \"standard\"\n \t}\n \n \tbanner, err := ascii.LoadBanner(font)\n-\tif err != nil {\n-\t\thttp.Error(w, \"Font not found\", http.StatusNotFound)\n-\t\treturn\n-\t}\n+\t\n \n \tresult, err := ascii.RenderAscii(text, banner)\n \tif err != nil {\n \t\tw.WriteHeader(http.StatusBadRequest)\n@@ -72,10 +69,10 @@\n \n \trenderTemplate(w, \"index.html\", PageData{\n \t\tResult: template.HTML(result),\n \t\tText:   text,\n-\t\t  Font:   font,   // 👈 مهم\n-    Color:  color,  // 👈 مهم\n+\t\tFont:   font,  // 👈 مهم\n+\t\tColor:  color, // 👈 مهم\n \t})\n }\n \n func AboutHandler(w http.ResponseWriter, r *http.Request) {\n"
+                },
+                {
+                    "date": 1780911131808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,12 @@\n \t\tfont = \"standard\"\n \t}\n \n \tbanner, err := ascii.LoadBanner(font)\n-\t\n+\tif err != nil {\n+\t\thttp.Error(w, \"Font not found\", http.StatusNotFound)\n+\t\treturn\n+\t}\n \n \tresult, err := ascii.RenderAscii(text, banner)\n \tif err != nil {\n \t\tw.WriteHeader(http.StatusBadRequest)\n"
                 }
             ],
             "date": 1778956960642,

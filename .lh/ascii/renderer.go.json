@@ -1,0 +1,22 @@
+{
+    "sourceFile": "ascii/renderer.go",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1780911927692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1780911937851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,31 @@\n package ascii\n \n import (\n-\t\"fmt\"\n+\t\"errors\"\n \t\"os\"\n \t\"strings\"\n )\n \n+var (\n+\tErrBannerNotFound       = errors.New(\"banner not found\")\n+\tErrInvalidBanner        = errors.New(\"invalid banner\")\n+\tErrUnsupportedCharacter = errors.New(\"unsupported character\")\n+)\n+\n func LoadBanner(font string) ([]string, error) {\n \tdata, err := os.ReadFile(\"ascii/fonts/\" + font + \".txt\")\n \tif err != nil {\n+\t\tif os.IsNotExist(err) {\n+\t\t\treturn nil, ErrBannerNotFound\n+\t\t}\n \t\treturn nil, err\n \t}\n \n \tlines := strings.Split(string(data), \"\\n\")\n+\tif len(lines) < 855 {\n+\t\treturn nil, ErrInvalidBanner\n+\t}\n \n \treturn lines, nil\n }\n \n@@ -31,15 +43,15 @@\n \t\tfor row := 0; row < 8; row++ {\n \t\t\tfor _, ch := range line {\n \n \t\t\t\tif ch < 32 || ch > 126 {\n-\t\t\t\t\treturn \"\", fmt.Errorf(\"unsupported character\")\n+\t\t\t\t\treturn \"\", ErrUnsupportedCharacter\n \t\t\t\t}\n \n \t\t\t\tindex := (int(ch)-32)*9 + row + 1\n \n \t\t\t\tif index >= len(lines) {\n-\t\t\t\t\treturn \"\", fmt.Errorf(\"invalid banner\")\n+\t\t\t\t\treturn \"\", ErrInvalidBanner\n \t\t\t\t}\n \n \t\t\t\toutput.WriteString(lines[index])\n \t\t\t}\n"
+                }
+            ],
+            "date": 1780911927692,
+            "name": "Commit-0",
+            "content": "package ascii\n\nimport (\n\t\"fmt\"\n\t\"os\"\n\t\"strings\"\n)\n\nfunc LoadBanner(font string) ([]string, error) {\n\tdata, err := os.ReadFile(\"ascii/fonts/\" + font + \".txt\")\n\tif err != nil {\n\t\treturn nil, err\n\t}\n\n\tlines := strings.Split(string(data), \"\\n\")\n\n\treturn lines, nil\n}\n\nfunc RenderAscii(text string, lines []string) (string, error) {\n\n\tinputLines := strings.Split(strings.ReplaceAll(text, \"\\r\\n\", \"\\n\"), \"\\n\")\n\tvar output strings.Builder\n\n\tfor _, line := range inputLines {\n\t\tif line == \"\" {\n\t\t\toutput.WriteByte('\\n')\n\t\t\tcontinue\n\t\t}\n\n\t\tfor row := 0; row < 8; row++ {\n\t\t\tfor _, ch := range line {\n\n\t\t\t\tif ch < 32 || ch > 126 {\n\t\t\t\t\treturn \"\", fmt.Errorf(\"unsupported character\")\n\t\t\t\t}\n\n\t\t\t\tindex := (int(ch)-32)*9 + row + 1\n\n\t\t\t\tif index >= len(lines) {\n\t\t\t\t\treturn \"\", fmt.Errorf(\"invalid banner\")\n\t\t\t\t}\n\n\t\t\t\toutput.WriteString(lines[index])\n\t\t\t}\n\t\t\toutput.WriteByte('\\n')\n\t\t}\n\t}\n\n\treturn output.String(), nil\n}\n"
+        }
+    ]
+}

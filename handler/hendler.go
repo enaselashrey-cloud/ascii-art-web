@@ -2,6 +2,7 @@ package handler
 
 import (
 	"ascii-art/ascii"
+	"errors"
 	"html/template"
 	"net/http"
 )
@@ -52,12 +53,22 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	banner, err := ascii.LoadBanner(font)
 	if err != nil {
-		http.Error(w, "Font not found", http.StatusNotFound)
+		if errors.Is(err, ascii.ErrBannerNotFound) {
+			http.Error(w, "Font not found", http.StatusNotFound)
+			return
+		}
+
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
 	result, err := ascii.RenderAscii(text, banner)
 	if err != nil {
+		if errors.Is(err, ascii.ErrInvalidBanner) {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+
 		w.WriteHeader(http.StatusBadRequest)
 		renderTemplate(w, "index.html", PageData{
 			Result: template.HTML("Invalid input"),
