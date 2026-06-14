@@ -528,4 +528,142 @@ button:active {
     width: 180px;
   }
 }
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+
+  color: rgb(213, 194, 182);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+.about-container h2 {
+  color: rgb(233, 139, 86);
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(233, 139, 86, 0.3);
+  padding-bottom: 5px;
+}
+
+.about-container h3 {
+  color: rgb(233, 139, 86);
+  margin-top: 20px;
+  margin-bottom: 8px;
+   border-bottom: 1px solid rgba(233, 139, 86, 0.3);
+  padding-bottom: 5px;
+}
+
+.about-container p {
+  margin-top: 0;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.about-container ul {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.about-container li {
+  margin-bottom: 6px;
+}
+
+
+
+
+.history-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: rgb(213, 194, 182);
+  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.history-container h2 {
+  color: rgb(233, 139, 86);
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.history-container h3 {
+  color: rgb(233, 139, 86);
+  font-size: 1.4rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.history-container p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.history-container h3 {
+  border-bottom: 1px solid rgba(233, 139, 86, 0.3);
+  padding-bottom: 5px;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  color: rgb(213, 194, 182);
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-container h2 {
+  color: rgb(233, 139, 86);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-container h3 {
+  color: rgb(233, 139, 86);
+  border-bottom: 1px solid rgba(233, 139, 86, 0.3);
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border: 1px solid rgba(233, 139, 86, 0.3);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgb(213, 194, 182);
+  font-family: inherit;
+}
+
+.contact-form button {
+  width: fit-content;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: rgb(233, 139, 86);
+  color: white;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+}

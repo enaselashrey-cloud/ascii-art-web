@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 13,
+            "activePatchIndex": 16,
             "patches": [
                 {
                     "date": 1778711488322,
@@ -60,6 +60,18 @@
                 {
                     "date": 1779000847444,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,8 +56,12 @@\n   <!-- Footer -->\r\n   <div class=\"footer\">\r\n     <p>© 2026 ASCII Art Project</p>\r\n   </div>\r\n-\r\n+<script>\r\n+if (window.history.replaceState) {\r\n+  window.history.replaceState(null, null, window.location.pathname);\r\n+}\r\n+</script>\r\n </body>\r\n </html>\r\n {{end}}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1781171420994,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,12 +56,8 @@\n   <!-- Footer -->\r\n   <div class=\"footer\">\r\n     <p>© 2026 ASCII Art Project</p>\r\n   </div>\r\n-<script>\r\n-if (window.history.replaceState) {\r\n-  window.history.replaceState(null, null, window.location.pathname);\r\n-}\r\n-</script>\r\n+\r\n </body>\r\n </html>\r\n {{end}}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1781171916734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \r\n     <div>\r\n       <a href=\"/about\" class=\"nav-item\">About</a>\r\n       <a href=\"/history\" class=\"nav-item\">History</a>\r\n-      <a href=\"/contact\" class=\"nav-item\">Contact</a>\r\n+      <a href=\"/contact\" class=\"nav-item\">Contact us</a>\r\n     </div>\r\n   </div>\r\n \r\n  <div class=\"main-layout\">\r\n"
+                },
+                {
+                    "date": 1781176481627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \r\n     <div>\r\n       <a href=\"/about\" class=\"nav-item\">About</a>\r\n       <a href=\"/history\" class=\"nav-item\">History</a>\r\n-      <a href=\"/contact\" class=\"nav-item\">Contact us</a>\r\n+      <a href=\"/contact\" class=\"nav-item\">Contact</a>\r\n     </div>\r\n   </div>\r\n \r\n  <div class=\"main-layout\">\r\n"
                 }
             ],
             "date": 1778711488322,

@@ -10,8 +10,8 @@ import (
 type PageData struct {
 	Result template.HTML
 	Text   string
-	Font   string // 👈 ضيفي دي
-	Color  string // 👈 ودي
+	Font   string 
+	Color  string 
 }
 
 func renderTemplate(
@@ -84,11 +84,19 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "index.html", PageData{
 		Result: template.HTML(result),
 		Text:   text,
-		Font:   font,  // 👈 مهم
-		Color:  color, // 👈 مهم
+		Font:   font, 
+		Color:  color,
 	})
 }
 
 func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "about.html", nil)
+}
+
+func History(w http.ResponseWriter, r *http.Request){
+	renderTemplate(w, "history.html",nil)
+}
+
+func Contact(w http.ResponseWriter, r *http.Request){
+	renderTemplate(w, "contact.html",nil)
 }
