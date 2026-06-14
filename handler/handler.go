@@ -17,7 +17,7 @@ type PageData struct {
 func renderTemplate(
 	w http.ResponseWriter,
 	page string,
-	data interface{},
+	data any,
 ) {
 
 	tmpl := template.Must(template.ParseFiles(
