@@ -230,7 +230,6 @@ select option {
   backdrop-filter: blur(10px);
 
   cursor: pointer;
-  transition: 0.3s; /* 👈 مهم */
 }
 /* 🔥 hover */
 .color-select-box:hover {
