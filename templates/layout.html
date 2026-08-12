@@ -1,10 +1,11 @@
 {{define "layout"}}
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>ASCII Art</title>
-    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/static/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,6 @@
 
 <body>
 
-  <!-- Navbar -->
   <div class="navbar">
     <div>
       <a href="/" class="logo">ASCII</a>
@@ -27,41 +27,40 @@
     </div>
   </div>
 
- <div class="main-layout">
+  <div class="main-layout">
 
-  <!-- الشمال: المحتوى (الفورم) -->
-  <div class="content">
-    {{template "content" .}}
-  </div>
-
-  <!-- اليمين: الصورة + السلوچان -->
-  <div class="puzzle">
-
-    <div class="text">
-      <h5>
-        LIFE <br>
-        IS <br>
-        PUZZLE
-      </h5>
-
-      <h1>We solve it..!</h1>
+    <div class="content">
+      {{template "content" .}}
     </div>
 
-    <img src="/static/image.png" class="puzzle-img">
+    <div class="puzzle">
+
+      <div class="text">
+        <h5>
+          LIFE <br>
+          IS <br>
+          PUZZLE
+        </h5>
+
+        <h1>We solve it..!</h1>
+      </div>
+
+      <img src="/static/image.png" class="puzzle-img">
+
+    </div>
 
   </div>
 
-</div>
-
-  <!-- Footer -->
   <div class="footer">
     <p>© 2026 ASCII Art Project</p>
   </div>
-<script>
-if (window.history.replaceState) {
-  window.history.replaceState(null, null, window.location.pathname);
-}
-</script>
+
+  <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, "", "/");
+    }
+  </script>
 </body>
+
 </html>
 {{end}}

@@ -10,8 +10,8 @@ import (
 type PageData struct {
 	Result template.HTML
 	Text   string
-	Font   string 
-	Color  string 
+	Font   string
+	Color  string
 }
 
 func renderTemplate(
@@ -33,8 +33,23 @@ func renderTemplate(
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Bad Request", http.StatusBadRequest)
+		return
+	}
+
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
+		return
+	}
+
+	renderTemplate(w, "index.html", PageData{})
+
+}
+
+func AsciiHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -84,7 +99,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "index.html", PageData{
 		Result: template.HTML(result),
 		Text:   text,
-		Font:   font, 
+		Font:   font,
 		Color:  color,
 	})
 }
@@ -93,10 +108,10 @@ func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "about.html", nil)
 }
 
-func History(w http.ResponseWriter, r *http.Request){
-	renderTemplate(w, "history.html",nil)
+func History(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "history.html", nil)
 }
 
-func Contact(w http.ResponseWriter, r *http.Request){
-	renderTemplate(w, "contact.html",nil)
+func Contact(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "contact.html", nil)
 }

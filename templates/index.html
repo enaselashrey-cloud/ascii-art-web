@@ -1,48 +1,49 @@
 {{define "content"}}
-<form method="post">
-<div class="main-box">
 
-  
+<form action="/ascii" method="POST">
+  <div class="main-box">
 
-  <!-- input box -->
-  <div class="input-box">
-    <textarea name="text" placeholder="Enter your text...">{{.Text}}</textarea>
+
+
+    <!-- input box -->
+    <div class="input-box">
+      <textarea name="text" placeholder="Enter your text...">{{.Text}}</textarea>
+    </div>
+
+    <!-- options -->
+    <div class="options">
+
+      <!-- FONT -->
+      <div class="select-box">
+        <select name="font">
+          <option value="" disabled hidden {{if not .Font}}selected{{end}}>Font</option>
+
+          <option value="standard" {{if eq .Font "standard" }}selected{{end}}>Standard</option>
+          <option value="shadow" {{if eq .Font "shadow" }}selected{{end}}>Shadow</option>
+          <option value="thinkertoy" {{if eq .Font "thinkertoy" }}selected{{end}}>Thinkertoy</option>
+        </select>
+      </div>
+
+      <div class="color-select-box">
+        <select name="color">
+          <option value="" disabled selected hidden>Color</option>
+          <option value="red">🔴 Red</option>
+          <option value="blue">🔵 Blue</option>
+          <option value="green">🟢 Green</option>
+          <option value="orange">🟠 Orange</option>
+          <option value="purple">🟣 Purple</option>
+        </select>
+      </div>
+
+    </div>
+    <!-- button -->
+    <button type="submit">Generate</button>
+
+    <!-- output -->
+    <div class="output-box">
+      <pre>{{.Result}}</pre>
+    </div>
+
   </div>
-
-  <!-- options -->
- <div class="options">
-
-  <!-- FONT -->
-  <div class="select-box">
-  <select name="font">
-  <option value="" disabled hidden {{if not .Font}}selected{{end}}>Font</option>
-
-  <option value="standard" {{if eq .Font "standard"}}selected{{end}}>Standard</option>
-  <option value="shadow" {{if eq .Font "shadow"}}selected{{end}}>Shadow</option>
-  <option value="thinkertoy" {{if eq .Font "thinkertoy"}}selected{{end}}>Thinkertoy</option>
-</select>
-</div>
-
- <div class="color-select-box">
-  <select name="color">
-    <option value="" disabled selected hidden>Color</option>
-    <option value="red">🔴 Red</option>
-    <option value="blue">🔵 Blue</option>
-    <option value="green">🟢 Green</option>
-    <option value="orange">🟠 Orange</option>
-    <option value="purple">🟣 Purple</option>
-  </select>
-</div>
-
-</div>
-  <!-- button -->
-  <button type="submit">Generate</button>
-
-  <!-- output -->
-  <div class="output-box">
-    <pre>{{.Result}}</pre>
-  </div>
-
-</div>
 </form>
 {{end}}
