@@ -1,9 +1,7 @@
 {{define "content"}}
 
-<form action="/ascii" method="POST">
+<form action="/ascii-art" method="POST">
   <div class="main-box">
-
-
 
     <!-- input box -->
     <div class="input-box">
@@ -26,12 +24,14 @@
 
       <div class="color-select-box">
         <select name="color">
-          <option value="" disabled selected hidden>Color</option>
-          <option value="red">🔴 Red</option>
-          <option value="blue">🔵 Blue</option>
-          <option value="green">🟢 Green</option>
-          <option value="orange">🟠 Orange</option>
-          <option value="purple">🟣 Purple</option>
+          <option value="" disabled hidden {{if not .Color}}selected{{end}}>
+            Color
+          </option>
+          <option value="red" {{if eq .Color "red" }}selected{{end}}>🔴 Red</option>
+          <option value="blue" {{if eq .Color "blue" }}selected{{end}}>🔵 Blue</option>
+          <option value="green" {{if eq .Color "green" }}selected{{end}}>🟢 Green</option>
+          <option value="orange" {{if eq .Color "orange" }}selected{{end}}>🟠 Orange</option>
+          <option value="purple" {{if eq .Color "purple" }}selected{{end}}>🟣 Purple</option>
         </select>
       </div>
 
@@ -41,7 +41,7 @@
 
     <!-- output -->
     <div class="output-box">
-      <pre>{{.Result}}</pre>
+      <pre {{if .Color}}style="color: {{.Color}}" {{end}}>{{.Result}}</pre>
     </div>
 
   </div>

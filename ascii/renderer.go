@@ -21,7 +21,7 @@ func LoadBanner(font string) ([]string, error) {
 		return nil, err
 	}
 
-	lines := strings.Split(string(data), "\n")
+	lines := strings.Split(strings.ReplaceAll(string(data), "\r\n", "\n"), "\n")
 	if len(lines) < 855 {
 		return nil, ErrInvalidBanner
 	}

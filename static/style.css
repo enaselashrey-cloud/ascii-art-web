@@ -1,6 +1,7 @@
 :root {
   --main-color: rgb(233, 139, 86);
   --glass-bg: rgba(14, 45, 74, 0.4);
+  --text-color: rgb(213, 194, 182);
 }
 
 body {
@@ -12,8 +13,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
-
 
 /* Navbar */
 .navbar {
@@ -42,6 +41,7 @@ body {
   /* يفضل فوق كل حاجة */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   font-family: 'Poppins', sans-serif;
+  
 }
 
 .logo {
@@ -56,12 +56,13 @@ body {
 
 .nav-item,
 .logo {
-  color: rgb(213, 194, 182, 100);
+  color: var(--text-color);
   text-decoration: none;
   margin-left: 15px;
 
 
 }
+
 
 /* Layout */
 .main-layout {
@@ -79,8 +80,7 @@ body {
 .puzzle {
   position: absolute;
   right: 12px;
-  top: 374px;
-
+  top: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,7 +95,7 @@ body {
 
 .text {
   color: orange;
-  transform: translateY(20px);
+  transform: translateY(30px);
 }
 
 .text h1 {
@@ -108,6 +108,7 @@ body {
   margin-top: 10px;
   color: rgba(213, 194, 182, 100);
 }
+
 
 /* Main Box */
 .main-box {
@@ -182,7 +183,6 @@ textarea {
   gap: 20px;
 }
 
-
 .select-box,
 .color-box {
   width: 120px;
@@ -202,8 +202,6 @@ textarea {
   cursor: pointer;
 
 }
-
-
 
 .select-box select {
   all: unset;
@@ -247,8 +245,6 @@ select option {
     0 0 6px rgba(233, 139, 86, 0.3);
 }
 
-
-
 .select-box select:focus,
 .select-box select:hover {
   color: var(--main-color);
@@ -281,9 +277,6 @@ select option {
     0 0 6px rgba(233, 139, 86, 0.3);
 }
 
-
-
-
 /* اللون الافتراضي */
 .color-select-box select {
   all: unset;
@@ -304,7 +297,6 @@ select option {
   -moz-appearance: none;
 }
 
-
 /* 🔥 hover على كلمة Color */
 .color-select-box:hover select {
   color: var(--main-color);
@@ -318,6 +310,7 @@ select option {
 }
 
 
+/* button */
 button {
   width: 150px;
   margin: 15px auto;
@@ -360,6 +353,7 @@ button:active {
     inset 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+
 /* output box */
 .output-box {
   background: rgba(14, 33, 56, 1);
@@ -379,7 +373,6 @@ button:active {
   /* scroll */
 }
 
-
 .output-box pre {
   margin: 0;
   font-family: monospace;
@@ -388,14 +381,11 @@ button:active {
 }
 
 
-
-
-
 /* Footer */
 .footer {
   width: 95%;
   margin: 0 auto;
-  margin-top: 100px;
+  margin-top: auto;
   padding: 8px 20px;
 
   display: flex;
@@ -410,14 +400,14 @@ button:active {
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   opacity: 0.9;
-  color: rgb(213, 194, 182, 100);
+  color: var(--text-color);
 
   font-family: 'Poppins', sans-serif;
 
 }
 
 
-
+/* about page */
 
 .about-container {
   display: flex;
@@ -431,7 +421,7 @@ button:active {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
 
-  color: rgb(213, 194, 182);
+  color: var(--text-color);
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
 }
@@ -467,14 +457,13 @@ button:active {
 }
 
 
-
+/* history page */
 
 .history-container {
   max-width: 800px;
   margin: 40px auto;
-  padding: 20px;
   font-family: 'Poppins', sans-serif;
-  color: rgb(213, 194, 182);
+  color: var(--text-color);
   line-height: 1.8;
   background: rgba(255, 255, 255, 0.03);
   padding: 30px;
@@ -493,6 +482,8 @@ button:active {
   font-size: 1.4rem;
   margin-top: 25px;
   margin-bottom: 10px;
+  border-bottom: 1px solid rgba(233, 139, 86, 0.3);
+  padding-bottom: 5px;
 }
 
 .history-container p {
@@ -501,10 +492,8 @@ button:active {
   text-align: justify;
 }
 
-.history-container h3 {
-  border-bottom: 1px solid rgba(233, 139, 86, 0.3);
-  padding-bottom: 5px;
-}
+
+/* contact page */
 
 .contact-container {
   max-width: 800px;
@@ -512,7 +501,7 @@ button:active {
   padding: 30px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
-  color: rgb(213, 194, 182);
+  color: var(--text-color);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -541,7 +530,7 @@ button:active {
   border: 1px solid rgba(233, 139, 86, 0.3);
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.05);
-  color: rgb(213, 194, 182);
+  color: var(--text-color);
   font-family: inherit;
 }
 
@@ -559,6 +548,72 @@ button:active {
   opacity: 0.9;
 }
 
+
+/* error page */
+
+.error-page {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-color);
+}
+
+.error-page h1 {
+  margin: 0;
+  font-size: 16rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 8px;
+}
+
+.error-page p {
+  margin: 20px 0 30px;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.error-page a {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  color: var(--main-color);
+}
+
+.error-page a:hover {
+  transform: translateY(-2px);
+  opacity: 0.85;
+}
+
+
+@media (max-width: 1024px) {
+
+  .content {
+    width: 60%;
+  }
+
+  .main-layout {
+    padding: 80px 20px 20px;
+    /* 👈 أقل شوية */
+  }
+
+  .puzzle {
+    width: 40%;
+    position: static;
+    /* 👈 مهم جدًا */
+    margin-top: 30px;
+  }
+
+  .puzzle-img {
+    width: 180px;
+  }
+}
 
 @media (max-width: 768px) {
 
@@ -615,28 +670,5 @@ button:active {
   .text {
     position: static;
     margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 1024px) {
-
-  .content {
-    width: 60%;
-  }
-
-  .main-layout {
-    padding: 80px 20px 20px;
-    /* 👈 أقل شوية */
-  }
-
-  .puzzle {
-    width: 40%;
-    position: static;
-    /* 👈 مهم جدًا */
-    margin-top: 30px;
-  }
-
-  .puzzle-img {
-    width: 180px;
   }
 }
