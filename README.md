@@ -4,7 +4,7 @@
 
 # ✨ Turn Text Into Beautiful ASCII Art ✨
 
-A modern **Go Web Application** that transforms plain text into stunning **ASCII Art** using multiple fonts, customizable colors, and a clean responsive interface.
+A modern **Go Web Application** that transforms supported text into stunning **ASCII Art** using multiple fonts, customizable colors, and a clean responsive interface.
 
 <img src="static/home.png" width="900"/>
 
@@ -14,7 +14,7 @@ A modern **Go Web Application** that transforms plain text into stunning **ASCII
 
 ## 🌟 Features
 
-✨ Convert any text into ASCII Art instantly
+✨ Convert supported text into ASCII Art instantly
 
 🎨 Multiple banner fonts
 
@@ -40,8 +40,6 @@ A modern **Go Web Application** that transforms plain text into stunning **ASCII
 🛡️ Built-in Error Handling
 
 ---
-
-
 
 # 🛠️ Built With
 
@@ -71,23 +69,28 @@ ascii-art-web
 │   │   ├── standard.txt
 │   │   ├── shadow.txt
 │   │   └── thinkertoy.txt
-│   └── renderer.go
+│   ├── renderer.go
+│   └── renderer_test.go
 │
 ├── handler
-│   └── handler.go
+│   ├── handler.go
+│   └── handler_test.go
 │
 ├── templates
 │   ├── layout.html
 │   ├── index.html
 │   ├── about.html
 │   ├── history.html
-│   └── contact.html
+│   ├── contact.html
+│   └── error.html
 │
 ├── static
 │   ├── style.css
-│   └── image.png
+│   ├── image.png
+│   └── home.png
 │
 ├── main.go
+├── go.mod
 └── README.md
 ```
 
@@ -96,55 +99,78 @@ ascii-art-web
 # ⚙️ How It Works
 
 ```text
-          🌍 Browser
-               │
-               ▼
-        HTTP Request
-               │
-               ▼
-         Go HTTP Server
-               │
-               ▼
-          HTTP Router
-               │
-      ┌────────┼────────┐
-      ▼        ▼        ▼
-    Home    ASCII     About
-      │        │
-      │        ▼
-      │   Read Form
-      │        │
-      │        ▼
-      │  Load Banner
-      │        │
-      │        ▼
-      │ Generate ASCII
-      │        │
-      └────────▼─────────► Render Template ► Browser
+              🌍 Browser
+                   │
+                   ▼
+            HTTP Request
+                   │
+                   ▼
+             Go HTTP Server
+                   │
+                   ▼
+              HTTP Router
+                   │
+           ┌───────┼─────────┐
+           ▼       ▼         ▼
+         Pages  ASCII Art  Static
+                   │
+                   ▼
+               Read Form
+                   │
+                   ▼
+            Validate Input
+                   │
+                   ▼
+             Load Banner
+                   │
+                   ▼
+           Generate ASCII
+                   │
+                   ▼
+           Render Template
+                   │
+                   ▼
+              🌍 Browser
 ```
+
+---
+
+# 🧠 Implementation
+
+The application follows a simple flow:
+
+1. The browser sends the entered text, selected banner, and color to `/ascii-art`.
+2. The handler validates the HTTP method, and selected banner.
+3. The selected banner file is loaded from `ascii/fonts/`.
+4. The banner data is validated and prepared for rendering.
+5. Each supported character is mapped to its 8-line ASCII representation.
+6. Multi-line input is processed line by line.
+7. The generated ASCII result is passed to the HTML template.
+8. Go's `html/template` package renders the final page safely.
+9. Errors such as invalid routes, methods, banners, characters, or template failures are handled with the appropriate HTTP response.
 
 ---
 
 # 🌐 Available Routes
 
-| Route       | Method | Description           |
-| :---------- | :----: | --------------------- |
-| `/`         |   GET  | 🏠 Home Page          |
-| `/ascii-art`|  POST  | 🎨 Generate ASCII Art |
-| `/about`    |   GET  | 💡 About Project      |
-| `/history`  |   GET  | 📖 ASCII History      |
-| `/contact`  |   GET  | 📩 Contact Page       |
-| `/static/*` |   GET  | 📁 Static Files       |
+| Route | Method | Description |
+| :--- | :---: | --- |
+| `/` | GET | 🏠 Home Page |
+| `/ascii-art` | POST | 🎨 Generate ASCII Art |
+| `/about` | GET | 💡 About Project |
+| `/history` | GET | 📖 ASCII History |
+| `/contact` | GET | 📩 Contact Page |
+| `/static/*` | GET | 📁 Static Files |
 
 ---
 
 # 🎯 Supported Fonts
 
-| Font       | Preview |
-| ---------- | ------- |
-| Standard   | ⭐⭐⭐⭐⭐   |
-| Shadow     | ⭐⭐⭐⭐⭐   |
-| Thinkertoy | ⭐⭐⭐⭐⭐   |
+| Font | Preview |
+| --- | --- |
+| Standard | ⭐⭐⭐⭐⭐ |
+| Shadow | ⭐⭐⭐⭐⭐ |
+| Thinkertoy | ⭐⭐⭐⭐⭐ |
 
 ---
 
@@ -159,6 +185,8 @@ ascii-art-web
 ✅ Invalid Banner
 
 ✅ Unsupported Characters
+
+✅ Input Length Validation
 
 ✅ Template Rendering Errors
 
@@ -186,15 +214,37 @@ go run .
 
 ### 4️⃣ Open your browser
 
-```
+```text
 http://localhost:8080
 ```
 
 ---
 
+# 🧪 Testing
+
+Run all tests with:
+
+```bash
+go test ./...
+```
+
+The test suite covers:
+
+* ASCII rendering behavior
+* Banner loading and validation
+* Multi-line input
+* Unsupported characters
+* HTTP status handling
+* Invalid fonts
+* Input length limits
+* Template rendering failures
+* Official ASCII Art audit cases
+
+---
+
 # 💻 Example
 
-Input
+Input:
 
 ```text
 Hello
@@ -202,14 +252,15 @@ Hello
 
 ↓
 
-Output
+Output:
 
 ```text
- _   _      _ _
-| | | | ___| | | ___
-| |_| |/ _ \ | |/ _ \
-|  _  |  __/ | | (_) |
-|_| |_|\___|_|_|\___/
+ _    _          _ _
+| |  | |        | | |
+| |__| |   ___  | | |  ___
+|  __  |  / _ \\ | | | / _ \\
+| |  | | |  __/ | | || (_) |
+|_|  |_|  \\___| |_|_| \\___/
 ```
 
 ---
@@ -221,10 +272,9 @@ Output
 * 🌙 Dark / Light Theme
 * 🔥 More Fonts
 * ⚡ Live Preview
-* 🕘 Generation History
+* 🕘 Save Previous Generations
 
 ---
-
 
 ### ❤️ Developed by
 
@@ -233,8 +283,6 @@ Output
 **Mostafa Mahmoud**
 
 ---
-
-
 
 <p align="center">
 

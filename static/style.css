@@ -17,12 +17,9 @@ body {
 /* Navbar */
 .navbar {
   position: fixed;
-  /* يفضل ثابت فوق */
   top: 10px;
-  /* مسافة من فوق */
   left: 50%;
   transform: translateX(-50%);
-  /* يوسّطه */
 
   width: 95%;
   padding: 10px 20px;
@@ -32,16 +29,11 @@ body {
   align-items: center;
 
   background: rgba(2, 16, 31, 0.6);
-  /* شفاف */
   backdrop-filter: blur(10px);
-  /* glass effect 🔥 */
 
   border-radius: 15px;
   z-index: 1000;
-  /* يفضل فوق كل حاجة */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  font-family: 'Poppins', sans-serif;
-  
 }
 
 .logo {
@@ -51,7 +43,7 @@ body {
 }
 
 .nav-item:hover {
-  color: rgb(233, 139, 86, 100);
+  color: var(--main-color);
 }
 
 .nav-item,
@@ -59,8 +51,6 @@ body {
   color: var(--text-color);
   text-decoration: none;
   margin-left: 15px;
-
-
 }
 
 
@@ -78,35 +68,33 @@ body {
 }
 
 .puzzle {
-  position: absolute;
+  position: fixed;
   right: 12px;
   top: 270px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0px;
+  gap: 0;
 }
 
 .puzzle-img {
   width: 200px;
   opacity: 0.5;
-
 }
 
 .text {
-  color: orange;
-  transform: translateY(30px);
+  color: var(--main-color);
+  transform: translateY(50px);
 }
 
 .text h1 {
   margin: 0;
   line-height: 1.2;
-  color: rgb(233, 139, 86, 100);
 }
 
 .text h5 {
   margin-top: 10px;
-  color: rgba(213, 194, 182, 100);
+  color: var(--text-color);
 }
 
 
@@ -119,7 +107,6 @@ body {
   background: rgba(10, 26, 45, 0.6);
 
   backdrop-filter: blur(20px);
-  /* أهم حاجة */
 
   border: 1px solid rgba(255, 255, 255, 0.15);
 
@@ -129,11 +116,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-
 }
 
 .input-box {
-  background: rgb(14 33 56);
+  background: rgb(14, 33, 56);
   backdrop-filter: blur(10px);
 
   padding: 10px;
@@ -150,10 +136,6 @@ body {
   box-shadow:
     0 0 8px rgba(233, 139, 86, 0.4),
     inset 2px 2px 6px rgba(0, 0, 0, 0.6);
-}
-
-textarea:focus {
-  outline: none;
 }
 
 .input-box:focus-within {
@@ -179,136 +161,65 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* مهم */
   gap: 20px;
 }
 
 .select-box,
-.color-box {
+.color-select-box {
   width: 120px;
   height: 36px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  /* 👈 عشان اللون يبعد شوية عن الكلمة */
-
   border-radius: 10px;
-
   background: var(--glass-bg);
   backdrop-filter: blur(10px);
-
-  cursor: pointer;
-
-}
-
-.select-box select {
-  all: unset;
-
-  width: 100%;
-  text-align: center;
-
-  cursor: pointer;
-
-  color: rgba(213, 194, 182, 0.6);
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-select {
-  background: transparent;
-  border: none;
-}
-
-.select-box select:valid {
-  color: rgba(213, 194, 182, 0.6);
-}
-
-.select-box select::selection {
-  background: transparent;
-}
-
-select option {
-  background: #0e2d4a;
-  /* كحلي */
-  color: var(--main-color);
-}
-
-.select-box:hover {
-  background: rgba(14, 45, 74, 0.7);
-
-  border: 1px solid rgba(233, 139, 86, 0.4);
-
-  box-shadow:
-    0 0 6px rgba(233, 139, 86, 0.3);
-}
-
-.select-box select:focus,
-.select-box select:hover {
-  color: var(--main-color);
-}
-
-
-.color-select-box {
-  width: 120px;
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 10px;
-
-  background: rgba(14, 45, 74, 0.4);
-  backdrop-filter: blur(10px);
-
   cursor: pointer;
 }
 
-/* 🔥 hover */
-.color-select-box:hover {
-  background: rgba(14, 45, 74, 0.7);
-
-  border: 1px solid rgba(233, 139, 86, 0.4);
-
-  box-shadow:
-    0 0 6px rgba(233, 139, 86, 0.3);
-}
-
-/* اللون الافتراضي */
+.select-box select,
 .color-select-box select {
   all: unset;
   width: 100%;
   text-align: center;
+  text-align-last: center;
   cursor: pointer;
-
   color: rgba(213, 194, 182, 0.6);
-  transition: 0.3s;
-
   outline: none;
   box-shadow: none;
-  /* 👈 احتياطي */
+}
 
-
+.color-select-box select {
+  transition: 0.3s;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
 
-/* 🔥 hover على كلمة Color */
-.color-select-box:hover select {
+select option {
+  background: #0e2d4a;
   color: var(--main-color);
 }
 
-/* 🔥 focus (لما تضغطي عليه) */
-.color-select-box select:focus {
-  color: var(--main-color);
-  outline: none;
-  box-shadow: none;
+.select-box:hover,
+.color-select-box:hover {
+  background: rgba(14, 45, 74, 0.7);
+  border: 1px solid rgba(233, 139, 86, 0.4);
+  box-shadow: 0 0 6px rgba(233, 139, 86, 0.3);
 }
 
+.select-box select:focus,
+.select-box select:hover,
+.color-select-box select:focus,
+.color-select-box select:hover {
+  color: var(--main-color);
+}
+
+.select-box select:has(option:checked:not([value=""])),
+.color-select-box select:has(option:checked:not([value=""])) {
+  color: var(--main-color);
+}
 
 /* button */
 button {
@@ -343,7 +254,6 @@ button:hover {
 
   border: 1px solid rgba(233, 139, 86, 0.6);
   color: #ff9a5c;
-
 }
 
 button:active {
@@ -353,10 +263,22 @@ button:active {
     inset 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 
 /* output box */
 .output-box {
-  background: rgba(14, 33, 56, 1);
+  background: rgb(14, 33, 56);
   padding: 15px;
   border-radius: 12px;
 
@@ -368,9 +290,7 @@ button:active {
   max-width: 100%;
   max-height: 200px;
   color: white;
-
   overflow: auto;
-  /* scroll */
 }
 
 .output-box pre {
@@ -394,21 +314,14 @@ button:active {
 
   background: rgba(2, 16, 31, 0.6);
   backdrop-filter: blur(10px);
-
   border-radius: 15px;
-
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   opacity: 0.9;
   color: var(--text-color);
-
-  font-family: 'Poppins', sans-serif;
-
 }
 
 
 /* about page */
-
 .about-container {
   display: flex;
   flex-direction: column;
@@ -422,7 +335,6 @@ button:active {
   border-radius: 12px;
 
   color: var(--text-color);
-  font-family: 'Poppins', sans-serif;
   font-size: 16px;
 }
 
@@ -458,11 +370,9 @@ button:active {
 
 
 /* history page */
-
 .history-container {
   max-width: 800px;
   margin: 40px auto;
-  font-family: 'Poppins', sans-serif;
   color: var(--text-color);
   line-height: 1.8;
   background: rgba(255, 255, 255, 0.03);
@@ -482,8 +392,6 @@ button:active {
   font-size: 1.4rem;
   margin-top: 25px;
   margin-bottom: 10px;
-  border-bottom: 1px solid rgba(233, 139, 86, 0.3);
-  padding-bottom: 5px;
 }
 
 .history-container p {
@@ -494,7 +402,6 @@ button:active {
 
 
 /* contact page */
-
 .contact-container {
   max-width: 800px;
   margin: 40px auto;
@@ -502,7 +409,6 @@ button:active {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
   color: var(--text-color);
-  font-family: 'Poppins', sans-serif;
 }
 
 .contact-container h2 {
@@ -539,7 +445,7 @@ button:active {
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
-  background: rgb(233, 139, 86);
+  background: var(--main-color);
   color: white;
   cursor: pointer;
 }
@@ -550,7 +456,6 @@ button:active {
 
 
 /* error page */
-
 .error-page {
   min-height: 60vh;
   display: flex;
@@ -600,13 +505,11 @@ button:active {
 
   .main-layout {
     padding: 80px 20px 20px;
-    /* 👈 أقل شوية */
   }
 
   .puzzle {
     width: 40%;
     position: static;
-    /* 👈 مهم جدًا */
     margin-top: 30px;
   }
 
@@ -619,16 +522,13 @@ button:active {
 
   .main-layout {
     flex-direction: column;
-    /* بدل row */
     align-items: center;
     padding: 100px 20px 20px;
     height: auto;
-    /* عشان يطول حسب المحتوى */
   }
 
   .content {
     position: static;
-    /* 👈 أهم حاجة */
     width: 100%;
 
     display: flex;
@@ -637,16 +537,16 @@ button:active {
 
   .main-box {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .options {
     flex-direction: column;
-    /* يبقوا تحت بعض */
     gap: 10px;
   }
 
   .select-box,
-  .color-box {
+  .color-select-box {
     width: 100%;
   }
 
@@ -654,7 +554,6 @@ button:active {
     width: 100%;
   }
 
-  /* البازل */
   .puzzle {
     position: static;
     margin-top: 30px;

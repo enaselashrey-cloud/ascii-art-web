@@ -1,6 +1,6 @@
-{{define "layout"}}
+{{define "page-start"}}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 
 <body>
 
-  <div class="navbar">
+  <nav class="navbar">
     <div>
       <a href="/" class="logo">ASCII</a>
     </div>
@@ -24,12 +24,14 @@
       <a href="/about" class="nav-item">About</a>
       <a href="/contact" class="nav-item">Contact us</a>
     </div>
-  </div>
+  </nav>
 
-  <div class="main-layout">
+  <main class="main-layout">
 
     <div class="content">
-      {{template "content" .}}
+{{end}}
+
+{{define "page-end"}}
     </div>
 
     <div class="puzzle">
@@ -44,15 +46,15 @@
         <h1>We solve it..!</h1>
       </div>
 
-      <img src="/static/image.png" class="puzzle-img">
+      <img src="/static/image.png" class="puzzle-img" alt="Colorful interlocking puzzle pieces">
 
     </div>
 
-  </div>
+  </main>
 
-  <div class="footer">
+  <footer class="footer">
     <p>© 2026 ASCII Art Project</p>
-  </div>
+  </footer>
 
   <script>
     if (window.history.replaceState && window.location.pathname === "/ascii-art") {

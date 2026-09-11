@@ -12,7 +12,16 @@ var (
 	ErrUnsupportedCharacter = errors.New("unsupported character")
 )
 
-func LoadBanner(font string) ([]string, error) {
+func RenderAscii(text, font string) (string, error) {
+	lines, err := loadBanner(font)
+	if err != nil {
+		return "", err
+	}
+
+	return render(text, lines)
+}
+
+func loadBanner(font string) ([]string, error) {
 	data, err := os.ReadFile("ascii/fonts/" + font + ".txt")
 	if err != nil {
 		if os.IsNotExist(err) {
@@ -29,7 +38,7 @@ func LoadBanner(font string) ([]string, error) {
 	return lines, nil
 }
 
-func RenderAscii(text string, lines []string) (string, error) {
+func render(text string, lines []string) (string, error) {
 
 	inputLines := strings.Split(strings.ReplaceAll(text, "\r\n", "\n"), "\n")
 	var output strings.Builder
@@ -48,11 +57,6 @@ func RenderAscii(text string, lines []string) (string, error) {
 				}
 
 				index := (int(ch)-32)*9 + row + 1
-
-				if index >= len(lines) {
-					return "", ErrInvalidBanner
-				}
-
 				output.WriteString(lines[index])
 			}
 			output.WriteByte('\n')

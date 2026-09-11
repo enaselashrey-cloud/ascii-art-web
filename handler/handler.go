@@ -2,6 +2,7 @@ package handler
 
 import (
 	"ascii-art/ascii"
+	"bytes"
 	"errors"
 	"html/template"
 	"log"
@@ -9,61 +10,7 @@ import (
 )
 
 type Handler struct {
-	indexTmpl   *template.Template
-	aboutTmpl   *template.Template
-	historyTmpl *template.Template
-	contactTmpl *template.Template
-	errorTmpl   *template.Template
-}
-
-func NewHandler() (*Handler, error) {
-	indexTmpl, err := template.ParseFiles(
-		"templates/layout.html",
-		"templates/index.html",
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	aboutTmpl, err := template.ParseFiles(
-		"templates/layout.html",
-		"templates/about.html",
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	historyTmpl, err := template.ParseFiles(
-		"templates/layout.html",
-		"templates/history.html",
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	contactTmpl, err := template.ParseFiles(
-		"templates/layout.html",
-		"templates/contact.html",
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	errorTmpl, err := template.ParseFiles(
-		"templates/layout.html",
-		"templates/error.html",
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	return &Handler{
-		indexTmpl:   indexTmpl,
-		aboutTmpl:   aboutTmpl,
-		historyTmpl: historyTmpl,
-		contactTmpl: contactTmpl,
-		errorTmpl:   errorTmpl,
-	}, nil
+	tmpl *template.Template
 }
 
 type PageData struct {
@@ -78,47 +25,60 @@ type ErrorData struct {
 	Message    string
 }
 
-func renderTemplate(
-	w http.ResponseWriter,
-	tmpl *template.Template,
-	data any,
-) {
-	if err := tmpl.ExecuteTemplate(w, "layout", data); err != nil {
-		log.Println("template execution error:", err)
+func NewHandler() (*Handler, error) {
+	tmpl, err := template.ParseGlob("templates/*.html")
+	if err != nil {
+		return nil, err
 	}
+
+	return &Handler{tmpl: tmpl}, nil
 }
 
-func (h *Handler) renderError(
+func (h *Handler) render(
 	w http.ResponseWriter,
 	status int,
-	message string,
+	name string,
+	data any,
 ) {
-	data := ErrorData{
-		StatusCode: status,
-		Message:    message,
+	var output bytes.Buffer
+	if err := h.tmpl.ExecuteTemplate(&output, name, data); err != nil {
+		log.Println("template execution error:", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
 	}
 
 	w.WriteHeader(status)
-	renderTemplate(w, h.errorTmpl, data)
+	if _, err := w.Write(output.Bytes()); err != nil {
+		log.Println("response write error:", err)
+	}
 }
 
 func (h *Handler) HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		h.renderError(w, http.StatusMethodNotAllowed, "Method Not Allowed")
+		h.render(w, http.StatusMethodNotAllowed, "error", ErrorData{
+			StatusCode: http.StatusMethodNotAllowed,
+			Message:    "Method Not Allowed",
+		})
 		return
 	}
 
 	if r.URL.Path != "/" {
-		h.renderError(w, http.StatusNotFound, "Page Not Found")
+		h.render(w, http.StatusNotFound, "error", ErrorData{
+			StatusCode: http.StatusNotFound,
+			Message:    "Page Not Found",
+		})
 		return
 	}
 
-	renderTemplate(w, h.indexTmpl, PageData{})
+	h.render(w, http.StatusOK, "index", PageData{})
 }
 
 func (h *Handler) AsciiHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		h.renderError(w, http.StatusMethodNotAllowed, "Method Not Allowed")
+		h.render(w, http.StatusMethodNotAllowed, "error", ErrorData{
+			StatusCode: http.StatusMethodNotAllowed,
+			Message:    "Method Not Allowed",
+		})
 		return
 	}
 
@@ -127,7 +87,10 @@ func (h *Handler) AsciiHandler(w http.ResponseWriter, r *http.Request) {
 	color := r.FormValue("color")
 
 	if text == "" {
-		renderTemplate(w, h.indexTmpl, PageData{})
+		h.render(w, http.StatusOK, "index", PageData{
+			Font:  font,
+			Color: color,
+		})
 		return
 	}
 
@@ -136,39 +99,41 @@ func (h *Handler) AsciiHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if font != "standard" && font != "shadow" && font != "thinkertoy" {
-		h.renderError(w, http.StatusBadRequest, "Invalid font")
-		return
-	}
-
-	banner, err := ascii.LoadBanner(font)
-	if err != nil {
-		if errors.Is(err, ascii.ErrBannerNotFound) {
-			h.renderError(w, http.StatusNotFound, "Font not found")
-			return
-		}
-
-		h.renderError(w, http.StatusInternalServerError, "Internal Server Error")
-		return
-	}
-
-	result, err := ascii.RenderAscii(text, banner)
-	if err != nil {
-		if errors.Is(err, ascii.ErrInvalidBanner) {
-			h.renderError(w, http.StatusInternalServerError, "Internal Server Error")
-			return
-		}
-
-		w.WriteHeader(http.StatusBadRequest)
-		renderTemplate(w, h.indexTmpl, PageData{
-			Result: "Invalid input",
-			Text:   text,
-			Font:   font,
-			Color:  color,
+		h.render(w, http.StatusBadRequest, "error", ErrorData{
+			StatusCode: http.StatusBadRequest,
+			Message:    "Invalid font",
 		})
 		return
 	}
 
-	renderTemplate(w, h.indexTmpl, PageData{
+	result, err := ascii.RenderAscii(text, font)
+	if err != nil {
+		if errors.Is(err, ascii.ErrUnsupportedCharacter) {
+			h.render(w, http.StatusBadRequest, "index", PageData{
+				Result: "Invalid input",
+				Text:   text,
+				Font:   font,
+				Color:  color,
+			})
+			return
+		}
+
+		if errors.Is(err, ascii.ErrBannerNotFound) {
+			h.render(w, http.StatusNotFound, "error", ErrorData{
+				StatusCode: http.StatusNotFound,
+				Message:    "Banner Not Found",
+			})
+			return
+		}
+
+		h.render(w, http.StatusInternalServerError, "error", ErrorData{
+			StatusCode: http.StatusInternalServerError,
+			Message:    "Internal Server Error",
+		})
+		return
+	}
+
+	h.render(w, http.StatusOK, "index", PageData{
 		Result: result,
 		Text:   text,
 		Font:   font,
@@ -178,27 +143,36 @@ func (h *Handler) AsciiHandler(w http.ResponseWriter, r *http.Request) {
 
 func (h *Handler) AboutHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		h.renderError(w, http.StatusMethodNotAllowed, "Method Not Allowed")
+		h.render(w, http.StatusMethodNotAllowed, "error", ErrorData{
+			StatusCode: http.StatusMethodNotAllowed,
+			Message:    "Method Not Allowed",
+		})
 		return
 	}
 
-	renderTemplate(w, h.aboutTmpl, nil)
+	h.render(w, http.StatusOK, "about", nil)
 }
 
 func (h *Handler) HistoryHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		h.renderError(w, http.StatusMethodNotAllowed, "Method Not Allowed")
+		h.render(w, http.StatusMethodNotAllowed, "error", ErrorData{
+			StatusCode: http.StatusMethodNotAllowed,
+			Message:    "Method Not Allowed",
+		})
 		return
 	}
 
-	renderTemplate(w, h.historyTmpl, nil)
+	h.render(w, http.StatusOK, "history", nil)
 }
 
 func (h *Handler) ContactHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		h.renderError(w, http.StatusMethodNotAllowed, "Method Not Allowed")
+		h.render(w, http.StatusMethodNotAllowed, "error", ErrorData{
+			StatusCode: http.StatusMethodNotAllowed,
+			Message:    "Method Not Allowed",
+		})
 		return
 	}
 
-	renderTemplate(w, h.contactTmpl, nil)
+	h.render(w, http.StatusOK, "contact", nil)
 }

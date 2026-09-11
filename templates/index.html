@@ -1,11 +1,13 @@
-{{define "content"}}
+{{define "index"}}
+{{template "page-start" .}}
 
 <form action="/ascii-art" method="POST">
   <div class="main-box">
 
     <!-- input box -->
     <div class="input-box">
-      <textarea name="text" placeholder="Enter your text...">{{.Text}}</textarea>
+      <label class="visually-hidden" for="text">Text to convert</label>
+      <textarea id="text" name="text" placeholder="Enter your text...">{{.Text}}</textarea>
     </div>
 
     <!-- options -->
@@ -13,7 +15,8 @@
 
       <!-- FONT -->
       <div class="select-box">
-        <select name="font">
+        <label class="visually-hidden" for="font">Banner font</label>
+        <select id="font" name="font">
           <option value="" disabled hidden {{if not .Font}}selected{{end}}>Font</option>
 
           <option value="standard" {{if eq .Font "standard" }}selected{{end}}>Standard</option>
@@ -23,15 +26,16 @@
       </div>
 
       <div class="color-select-box">
-        <select name="color">
+        <label class="visually-hidden" for="color">Text color</label>
+        <select id="color" name="color">
           <option value="" disabled hidden {{if not .Color}}selected{{end}}>
             Color
           </option>
           <option value="red" {{if eq .Color "red" }}selected{{end}}>🔴 Red</option>
           <option value="blue" {{if eq .Color "blue" }}selected{{end}}>🔵 Blue</option>
           <option value="green" {{if eq .Color "green" }}selected{{end}}>🟢 Green</option>
-          <option value="orange" {{if eq .Color "orange" }}selected{{end}}>🟠 Orange</option>
           <option value="purple" {{if eq .Color "purple" }}selected{{end}}>🟣 Purple</option>
+          <option value="orange" {{if eq .Color "orange" }}selected{{end}}>🟠 Orange</option>
         </select>
       </div>
 
@@ -46,4 +50,5 @@
 
   </div>
 </form>
+{{template "page-end" .}}
 {{end}}
