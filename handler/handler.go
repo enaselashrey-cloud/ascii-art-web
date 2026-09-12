@@ -2,10 +2,8 @@ package handler
 
 import (
 	"ascii-art/ascii"
-	"bytes"
 	"errors"
 	"html/template"
-	"log"
 	"net/http"
 )
 
@@ -40,16 +38,11 @@ func (h *Handler) render(
 	name string,
 	data any,
 ) {
-	var output bytes.Buffer
-	if err := h.tmpl.ExecuteTemplate(&output, name, data); err != nil {
-		log.Println("template execution error:", err)
+	w.WriteHeader(status)
+
+	if err := h.tmpl.ExecuteTemplate(w, name, data); err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
-	}
-
-	w.WriteHeader(status)
-	if _, err := w.Write(output.Bytes()); err != nil {
-		log.Println("response write error:", err)
 	}
 }
 
