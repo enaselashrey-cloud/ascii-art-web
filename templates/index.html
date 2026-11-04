@@ -41,7 +41,7 @@
 
     <!-- output -->
     <div class="output-box">
-      <pre>{{.Result}}</pre>
+      <pre {{if .Color}}style="color: {{.Color}}" {{end}}>{{.Result}}</pre>
     </div>
 
   </div>

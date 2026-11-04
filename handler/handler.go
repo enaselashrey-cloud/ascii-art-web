@@ -8,7 +8,7 @@ import (
 )
 
 type PageData struct {
-	Result template.HTML
+	Result string
 	Text   string
 	Font   string
 	Color  string
@@ -86,18 +86,16 @@ func AsciiHandler(w http.ResponseWriter, r *http.Request) {
 
 		w.WriteHeader(http.StatusBadRequest)
 		renderTemplate(w, "index.html", PageData{
-			Result: template.HTML("Invalid input"),
+			Result: ("Invalid input"),
 			Text:   text,
 		})
 		return
 	}
 
-	if color != "" {
-		result = "<span style='color:" + color + "'>" + result + "</span>"
-	}
+	
 
 	renderTemplate(w, "index.html", PageData{
-		Result: template.HTML(result),
+		Result: (result),
 		Text:   text,
 		Font:   font,
 		Color:  color,
