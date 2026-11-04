@@ -33,18 +33,17 @@ func renderTemplate(
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodGet {
-		http.Error(w, "Bad Request", http.StatusBadRequest)
-		return
-	}
-
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
 	}
 
-	renderTemplate(w, "index.html", PageData{})
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
 
+	renderTemplate(w, "index.html", PageData{})
 }
 
 func AsciiHandler(w http.ResponseWriter, r *http.Request) {
@@ -92,10 +91,8 @@ func AsciiHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	
-
 	renderTemplate(w, "index.html", PageData{
-		Result: (result),
+		Result: result,
 		Text:   text,
 		Font:   font,
 		Color:  color,
@@ -103,13 +100,28 @@ func AsciiHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func AboutHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
 	renderTemplate(w, "about.html", nil)
 }
 
 func History(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
 	renderTemplate(w, "history.html", nil)
 }
 
 func Contact(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
 	renderTemplate(w, "contact.html", nil)
 }
